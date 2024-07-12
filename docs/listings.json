@@ -1,0 +1,32 @@
+[
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/southAsia_crop/index.html",
+      "/posts/False_color_analysis/index.html",
+      "/posts/economic_zone/index.html",
+      "/posts/energy/index.html"
+    ]
+  },
+  {
+    "listing": "/featured_projects.html",
+    "items": [
+      "/featured_projects/calcofi/index.html",
+      "/featured_projects/econometrics/index.html",
+      "/featured_projects/data_viz/index.html",
+      "/featured_projects/ml_spotify/index.html"
+    ]
+  },
+  {
+    "listing": "/health.html",
+    "items": [
+      "/health_posts/a_gut_diversity/index.html",
+      "/health_posts/c_hiking/index.html",
+      "/health_posts/dogs/index.html",
+      "/health_posts/grass_fed vs grain-fed/index.html",
+      "/health_posts/mental_health/index.html",
+      "/health_posts/morning-ritual/index.html",
+      "/health_posts/seasonings/index.html"
+    ]
+  }
+]

@@ -1,0 +1,343 @@
+---
+title: "Ocean Carbon prediction:serving Calcofi dataset to make data driven Decision"
+Date: "2023-12-15"
+format:
+  html:
+    toc: true
+    html-math-method: katex
+    css: /featured_style_projects.css
+author:
+  - name: Sujan Bhattarai
+categories: [Machine Learning, Python] # self-defined categories
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+editor: 
+  markdown: 
+    wrap: 72
+engine: knitr
+---
+
+CalCOFI, the California Cooperative Oceanic Fisheries Investigations, was established in 1949 to investigate the ecological factors contributing to the collapse of the Pacific sardine population off California. Over time, its scope expanded to encompass the entire ecosystem of the southern California Current System, utilizing cutting-edge observation techniques. Its extensive time series data provides invaluable insights into the long-term impacts of environmental changes on marine ecosystems and the communities reliant on them, not only within the California Current System but also extending to the North Pacific and beyond on an international scale.
+
+As a part of this project, I am supporting the CALCOFI in predicting the ocean carbon values, which is a crucial part of the marine ecosystem. The dataset contains 12 columns, with 1 response variable and 11 predictors. The response variable is the dissolved inorganic carbon (DIC) concentration in the ocean, which is a key component of the marine carbon cycle. The predictors include various physical and chemical properties of the ocean, such as temperature, salinity, and oxygen concentration.
+
+The goal of this project is to develop multiple machine learning models that can accurately predict the DIC concentration in the ocean based on the given predictors. This model will help CALCOFI scientists better understand the factors influencing ocean carbon levels and make data-driven decisions to protect marine ecosystems.
+
+# Stepwise Flow of the Project
+
+- **Linear Regression Model with Stochastic Gradient Descent**
+- **Fine Tuned XGBoost Model**
+
+```{python}
+#hide all warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+#### Import all necessary libraries
+# import all required libraries
+import numpy as np
+import xgboost as xgb
+import pandas as pd
+import seaborn as sns
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.linear_model import SGDRegressor
+from sklearn.linear_model import Ridge
+```
+
+**Read the data and store ID:required during submission fo validity check**
+```{python}
+#-----read train and test set
+train_calcofi = pd.read_csv("data/train.csv")
+test_calcofi  = pd.read_csv("data/test.csv")  
+
+#collect the test ids for testcalcofi, required for submission dataset
+test_ids = test_calcofi.id
+test_calcofi = test_calcofi.drop(columns=['id'])
+```
+
+#### Data cleaning
+A model is only as good as the data.This step ensures that columns names are standarized, and the columns with inappropriate values are removed. The data is also checked for missing values. Incase of missing values, they are not imputed, but dropped. The CALCOFI did not provide claer guidance on how value should be imputted. So the best decision is to drop the rows with missing values.
+
+```{python}
+#----inspect the head and take the insights of data
+train_calcofi.head()
+#### Data cleaning and preprocessing
+#the column names are in snake case, change all to lowercase
+train_calcofi.columns = map(str.lower, train_calcofi.columns)
+test_calcofi.columns = map(str.lower, test_calcofi.columns)
+```
+
+```{python}
+#remove the unnamed:12 column
+train_calcofi = train_calcofi.drop(columns=['unnamed: 12'])
+train_calcofi.rename(columns={'ta1.x': 'ta1'}, inplace=True)
+
+train_calcofi.head()
+
+#--test the range and distribution of values
+train_calcofi.describe()
+
+# test for NA values
+train_calcofi.info()
+```
+
+The data looks clean. Now, a relationships betwen columns must be established and known. This helps in understanding the data, and also helps in feature selection. The next step below plots a correlation matrix. This will show those features that has strong relationship with the response variable. 
+
+The reason that the correlation matrix is plotted to see if linear regression can be useful. If the correlation matrix shows strong relationship between the response and predictors, then linear regression can be used. If not, then other models like XGboost must be used.
+
+```{python}
+#plot correlation matrix
+corr_matrix = train_calcofi.corr()
+
+# Plot the heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr_matrix, annot=False, cmap='coolwarm', fmt=".1f")
+plt.title('Correlation Heatmap')
+plt.show()
+```
+
+##### Linear regression model
+For this project, I will delve into using different machine learning models, from the simplest also called the Linear regression, then gradually moving up to the best model, called XGboost, which is also called the Queen of the Machine Learning models.
+
+```{python}
+#select only the predictors columns, and change them to array
+X = train_calcofi.drop(columns = ['dic', 'id'], axis=1)
+
+#select only the response column and change it to array
+y = train_calcofi['dic']
+
+#split the predictors and response variables from training and testing set
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state= 42)
+
+#### Linear regression
+# Create a pipeline with StandardScaler and LinearRegression
+model_pipeline = make_pipeline(StandardScaler(), LinearRegression())
+
+# Fit the model pipeline to the training data
+model_pipeline.fit(X_train, y_train)
+
+# Calculate R^2 (coefficient of determination) on the training set
+r_sq = model_pipeline.score(X_train, y_train)
+
+# Print the coefficient of determination
+print(f"Coefficient of determination (measure of variability in training set): {r_sq}")
+
+# predict on test set from model
+y_pred = model_pipeline.predict(X_test)
+
+# Assuming y_test contains the actual labels/targets for the test set
+squared_error = mean_squared_error(y_test, y_pred)
+print(f"Mean squared error: {squared_error}")
+```
+
+The base linear regression model has worked well, with mean squared error of 31, which means the ocean carbon values(DIC) was off by 31 point on average for the prediction test. But, the model can be tuned such that the error can be minimized. The most popular method to do so is the stochastic gradient descent. This approach finds the best local minima, that has the capacity to reduce error but without redcing model Bias for new unseen data.
+
+**Stochastic Gradient Descent**
+This approach uses the learning rate (also called eta), to find the minimum cost function. The different between base linear regression and this stochastic Gradient descent is that the base model calculates cost based on optimum values, while stochastic gradient descent calculates based on learning rate on the cost function. Most linear regression models are compataible with this approach, and the model can be improved by using this approach.
+
+
+```{python}
+# Create a pipeline with feature scaling and SGDRegressor
+pipeline = make_pipeline(StandardScaler(), SGDRegressor(max_iter=2000, learning_rate='constant', eta0=0.0009))
+
+# Fit the model
+pipeline.fit(X_train, y_train)
+
+# Make predictions
+y_pred = pipeline.predict(X_test)
+
+#print the model score
+print(f"Model score: {pipeline.score(X_test, y_test)}")
+
+# Calculate mean squared error
+squared_error = mean_squared_error(y_test, y_pred)
+print(f"Mean squared error: {squared_error}")
+```
+Doing stochastic gradient descent did not improve anything in the model. First thing to note is that, model is already 99% accurate. Using SGD appraoch increased accuracy by 0.0001, which is not a massive improvement. But when model imporoved by that factor, the MAE value increased. This means bias increased, which we don't want.
+**cross validation**
+
+```{python}
+# Instantiate the StandardScaler
+scaler = StandardScaler()
+
+# Fit and transform the training data
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+test_calcofi_scaled = scaler.transform(test_calcofi)
+
+#instantiate the model
+model_cv = LinearRegression()
+
+# Define KFold cross-validation strategy
+kf = KFold(n_splits = 20, shuffle = True, random_state=42)
+
+# Perform cross-validation
+cv_scores = cross_val_score(model_cv, X_train_scaled, y_train, cv = kf, scoring='neg_mean_squared_error')
+cv_scores
+```
+The cross validation output does not show specific pattern. Some blocks of rows obviously don't correlate with rest of the other. See the fourth value, and the 17th, whose scores are away off. There must be something in the data that we should be able to capture. Maybe the temperature or any natural variable on that period has produced different sets of values.
+
+The best number of splits is just 2 for this Dataset. Is it suprising ?? Yes, it is. The way I identified that after testing with higher number of splits. There is somthing odd in the data, which contains off data rows. Maybe temperature or any other variable is off. If I increase the splits, there will always be at least two blocks that CV score will be much higher at least 10 times higher than all other.
+
+```{python}
+# Calculate mean squared error using cross-validation
+mean_squared_error_cv = -cv_scores.mean()
+print(f"Mean squared error using 2-fold cross-validation: {mean_squared_error_cv}")
+
+# Fit the model on the entire training data
+model_cv.fit(X_train_scaled, y_train)
+
+# Make predictions on the test set
+y_pred = model_cv.predict(X_test_scaled)
+
+# Calculate mean squared error on the test set
+mse_lm = mean_squared_error(y_test, y_pred)
+print(f"Mean squared error on the test set: {mse_lm}") 
+#array of ids. copied from top cell
+test_ids = test_ids
+
+#predict based on the model
+prediction_on_test_calcofi = model_cv.predict(test_calcofi_scaled)
+
+# Create a DataFrame with predictions
+submission_df = pd.DataFrame({'id': test_ids, 'DIC': prediction_on_test_calcofi})
+
+# Save DataFrame to CSV
+submission_df.to_csv('linear_cv.csv', index=False)
+```
+
+#### XGBoost Model
+The next step involves using **XGboost** for making the prediction, Extreme Gradient Boosting, also called the queen of the ML models is one of the most robust models. 
+**Base XGBOOST model (no tuning: Out of Box model)**
+Note:XGBoost works on its own object type, which is Dmatrix. So, datatype conversion is required.
+
+```{python}
+# Create regression matrices, this is requirement for xgboost model
+dtrain_reg = xgb.DMatrix(X_train, y_train, enable_categorical=True)
+dtest_reg =  xgb.DMatrix(X_test, y_test, enable_categorical=True)
+```
+
+```{python}
+# use cross validation approach to catch the best boosting round
+n = 1000
+
+model_xgb = xgb.cv(
+   dtrain=dtrain_reg,
+   params = {},
+   num_boost_round= n,
+   nfold = 20, #number of folds for cross validation
+   verbose_eval=10, #record rmse every 10 interval
+   early_stopping_rounds = 5,
+   as_pandas = True#stop if there is no improvement in 5 consecutive rounds
+)
+
+# Extract the optimal number of boosting rounds
+optimal_boosting_rounds = model_xgb['test-rmse-mean'].idxmin()
+```
+
+```{python}
+# #using validation sets during training
+evals = [(dtrain_reg, "train"), (dtest_reg, "validation")]
+
+model_xgb = xgb.train(
+   params={},
+   dtrain=dtrain_reg,
+   num_boost_round= optimal_boosting_rounds,
+   evals=evals,#print rmse for every iterations
+   verbose_eval=10, #record rmse every 10 interval
+   early_stopping_rounds = 5 #stop if there is no improvement in 5 consecutive rounds
+)
+
+# #predict on the the test matrix
+preds = model_xgb.predict(dtest_reg)
+
+#check for rmse
+mse = mean_squared_error(y_test, preds, squared=False)
+
+print(f"MSE of the test model: {mse:.3f}")
+```
+
+
+```{python}
+#change test_calcofi to dmatrix object
+dmatrix_calcofi = xgb.DMatrix(test_calcofi)
+
+#prediction_on_separate_set = model.predict(dmatrix_calcofi)
+prediction_on_test_calcofi = model_xgb.predict(dmatrix_calcofi)
+
+# Create a DataFrame with predictions
+submission_df = pd.DataFrame({'id': test_ids, 'DIC': prediction_on_test_calcofi})
+
+# Save DataFrame to CSV
+submission_df.to_csv('xgb_base.csv', index=False)
+```
+
+**GRID TUNED XGBOOST MODEL
+```{python}
+# Define the parameter grid
+gbm_param_grid = {
+    'colsample_bytree': [0.5, 0.7, 0.9],
+    'n_estimators': [100, 200, 300, 1450],
+    'max_depth': [5, 7, 9],
+    'learning_rate': [0.001, 0.01]
+}
+
+#best hyperparameters based on running
+gbm_param_grid_set = {
+    'colsample_bytree': [0.5],
+    'n_estimators': [1450],
+    'max_depth': [5],
+    'learning_rate': [0.01]
+}
+
+# Instantiate the regressor
+gbm = xgb.XGBRegressor()
+
+# Instantiate GridSearchCV with seed
+gridsearch_mse = GridSearchCV(
+    param_grid=gbm_param_grid_set,
+    estimator=gbm,
+    scoring='neg_mean_squared_error',
+    cv=10,
+    verbose=1,
+)
+
+# Fit the gridmse
+gridsearch_mse.fit(X_train, y_train)
+
+# Best estimator
+best_estimator = gridsearch_mse.best_estimator_
+
+# Use the best estimator to make predictions on the test data
+y_pred = best_estimator.predict(X_test)
+
+# Calculate mean squared error
+mse_xgboost = mean_squared_error(y_test, y_pred)
+print("Mean Squared Error:", mse_xgboost)
+
+#get the model score
+print(f"Model score: {best_estimator.score(X_test, y_test)}")
+```
+
+```{python}
+#look at the hyperparameters selected by the model
+gridsearch_mse.best_estimator_
+```
+
+```{python}
+#create a table bring just mae score from linear regression and xgboost
+mse_lm, mse_xgboost 
+
+#create a table bring just mae score from linear regression and xgboost
+mse_lm, mse_xgboost
+```
+
+The XGboost model has lower Bias, and high accuracy compared to the linear regression model. Thus, I suggest  CALCOFI to use the XGBOOST model for any new incoming data on ocean values. The trained xgboost model can be deployed that has the capacity to updates the model with new data.
+ 

@@ -1,0 +1,54 @@
+Folder PATH listing for volume OS
+Volume serial number is 9268-63CD
+C:\USERS\SUJAN\ONEDRIVE\DOCUMENTS\MEDS\QUARTO_WEBSITE\SUJAN-BHATTARAI12.GITHUB.IO
++---.quarto
+¦   +---idx
+¦   ¦   +---posts
+¦   ¦       +---energy
+¦   ¦       +---logistic_regression
+¦   +---listing
+¦   +---preview
+¦   +---xref
+¦   +---_freeze
+¦       +---about
+¦       ¦   +---execute-results
+¦       +---index
+¦       ¦   +---execute-results
+¦       +---posts
+¦       ¦   +---energy
+¦       ¦   ¦   +---index
+¦       ¦   ¦       +---execute-results
+¦       ¦   ¦       +---figure-html
+¦       ¦   +---index
+¦       ¦   ¦   +---execute-results
+¦       ¦   ¦   +---figure-html
+¦       ¦   +---logistic_regression
+¦       ¦       +---index
+¦       ¦           +---execute-results
+¦       ¦           +---figure-html
+¦       +---projects
+¦       ¦   +---execute-results
+¦       +---site_libs
+¦           +---clipboard
+¦           +---quarto-listing
++---docs
+¦   +---docs
+¦   ¦   +---posts
+¦   ¦       +---energy
+¦   +---posts
+¦   ¦   +---energy
+¦   ¦   ¦   +---index_files
+¦   ¦   ¦       +---figure-html
+¦   ¦   +---logistic_regression
+¦   ¦       +---index_files
+¦   ¦           +---figure-html
+¦   +---site_libs
+¦       +---bootstrap
+¦       +---clipboard
+¦       +---quarto-html
+¦       +---quarto-listing
+¦       +---quarto-nav
+¦       +---quarto-search
++---posts
+    +---energy
+    +---logistic_regression

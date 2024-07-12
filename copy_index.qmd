@@ -1,0 +1,30 @@
+---
+title: "Sujan Bhattarai"
+resources: resume.pdf
+image: pic.jpg
+about:
+  template: jolla
+  image-shape: round
+  image-width: 15em
+  links:
+    - text: Email
+      icon: envelope-check
+      href: mailto:sujan@ucsb.edu
+    - text: GitHub
+      icon: github
+      href: https://github.com/Sujan-Bhattarai12/
+
+---
+
+:::{#ppc}
+<h1 id="tagline">Applied Statistician and Data scientist</h1>
+<center>
+<p id="description">"Empowering Profitable Decisions Through Data Science Expertise 
+{R, Python, SQL, SAS, Big Data}"</p>
+</center>
+:::
+
+
+
+
+ 

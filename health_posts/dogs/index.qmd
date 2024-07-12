@@ -1,0 +1,70 @@
+---
+title: "Health Benefits of Having Dogs"
+image: "dogs.jpg"
+format:
+  html:
+    toc: true
+    html-math-method: katex
+    css: /health_posts/health_style.css
+author:
+  - name: Sujan Bhattarai
+categories: [Health]
+draft: false
+editor:
+  markdown:
+    wrap: 72
+---
+
+<p>Humans don't share a recent relationship history with dogs and cats. Based on scientific evidence, dogs and humans have been companions for as long as 10,000 to 15,000 years, dating back to when eagles still hunted humans in the grasslands of Africa. Whether dogs evolved to secure food from humans or humans domesticated dogs to aid in hunting, the relationship is deeply ingrained in our history.</p>
+
+<figure class="wp-block-image size-large is-resized">
+  <img src="image1.jpg" class="wp-image-13" width="563" height="375"/>
+</figure>
+
+<blockquote>
+With 15,000 years of living together, humans and dogs have developed a genetic intimacy, naturally fostering affection for each other. But the central question is what kind of adaptations have humans developed due to these long-standing relationships?
+</blockquote>
+
+<ol>
+  <strong>1.Protection from autoimmune diseases</strong>
+</ol>
+
+<p>The relationship between cows and farmers saved many lives during the Cowpox epidemic in the 16th century. Similarly, pets can protect humans from autoimmune diseases like asthma. According to the book "The Gut Microbiome," pet owners have a 25% lower chance of developing autoimmune diseases such as asthma. The basic foundation of our health is the microbiome, which consists of billions of diverse bacteria living in our bodies. When these bacteria are balanced and diverse, we experience optimal physical and mental health, including better digestion and mental clarity.</p>
+
+<blockquote>
+By touching and being exposed to pets and farm animals, we come into contact with new bacteria, which helps our microbiome develop resistance. This resistance training makes our microbiome stronger against autoimmune diseases. This principle explains why cows protected farmers from cowpox and why dogs and cats can offer similar benefits.
+</blockquote>
+
+<ol>
+<strong>
+2.Improved mental health, even for non-remissive mental disorders 
+</strong>
+</ol>
+
+
+<p>Walking pets to nearby parks is a refreshing activity for city dwellers. Numerous studies have found that walking or playing with pets significantly reduces depression, alleviates loneliness, and facilitates psychotherapy. For example, Periera (2018) found higher remission rates for treatment-resistant disorders among patients with pets. This is particularly relevant in the 21st century, where humans are closely connected yet often feel mentally distant. The pressures of modern life, including the stress from 9-5 jobs, have disrupted our natural body functions, leading to increased cortisol and stress hormones.</p>
+
+<blockquote>
+Pets provide a natural way to combat these issues by offering companionship and physical activity, which help reduce stress and improve overall mental health.
+</blockquote>
+
+<strong><ol>
+3. Healthy and physically fit children</strong>
+</ol>
+
+<p>The benefits of having pets at home have been well-documented in clinical research. Studies have shown that pets can help reduce blood pressure in children. Additionally, pets can have a positive impact on aeroallergens and wheezing symptoms in young children. Although the effects of pets on wheezing are mixed, there is robust evidence suggesting that children can develop improved resistance to wheezing over time as they become accustomed to bacteria from pets.</p>
+
+<figure class="wp-block-image size-large is-resized">
+  <img src="image2.jpg" class="wp-image-14" width="385" height="385"/>
+</figure>
+
+
+<strong>
+<ol>
+4.Longevity and vitality
+</strong>
+</ol>
+
+<p>Having pets at home indirectly benefits humans by encouraging more physical activity. Pet owners, especially dog owners, are more likely to double their exercise and body movement by walking or jogging with their pets. Dog walking also increases exposure to sunlight, which has numerous benefits, from vitamin D production to improved eyesight. For more details, see the article [here](https://nativehealingmethods.com/2023/02/04/one-natural-reason-you-should-get-sunlight/).</p>
+
+<p>Date: 1/32/2023</p>

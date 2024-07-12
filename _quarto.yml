@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  favicon: pic.jpg
+  title: ""
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: featured_projects.qmd
+        text: DS-projects
+      - href: posts.qmd
+        text: Analytics-projects
+      - href: certifications.qmd
+        text: Certificates
+      - href: about.qmd
+        text: About
+ 
+  page-footer:
+    background: light
+    right:
+      - "Copyright 2023, Sujan Bhattarai"
+    left: 
+      - icon: github
+        href: https://github.com/Sujan-Bhattarai12
+    
+format:
+  html:
+    theme: 
+      - styles.scss
+    mainfont: Verdana 
+    css: styles.css
+
+
+

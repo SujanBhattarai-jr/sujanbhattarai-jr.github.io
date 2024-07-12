@@ -1,0 +1,30 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 20px;
+}
+
+h1, h2, h3 {
+  color: #0066cc;
+}
+
+/* styles.css */
+
+a {
+  color: #0066cc; /* Blue color */
+  text-decoration: none; /* Optional: Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Optional: Add underline on hover */
+}
+p {
+  color: #000; /* Black color */
+}
+
+blockquote {
+  color: #000; /* Black color */
+}

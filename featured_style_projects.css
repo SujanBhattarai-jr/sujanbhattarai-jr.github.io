@@ -1,0 +1,105 @@
+
+/* Styles for strong */
+strong {
+    font-size: 14pt;
+    font-family: Georgia, palatino, serif;
+}
+
+/* Styles for p */
+/* add georgia font */
+/* make text red  */
+p { 
+    padding-left: 15px;
+    font-size: 11pt;
+    font-family: Verdana, palatino, serif;
+    color: white;
+}
+
+/* Styles for blockquote */
+blockquote {
+    font-size: 12pt;
+    font-family: georgia, palatino, serif;
+}
+
+
+.quarto-title h1.title {
+    color: white /* Your desired color */;
+}
+
+/* Background color for body*/ 
+body {
+    background-color:  #213343; /* Use hex color code */
+} 
+
+/* set for all h3 to h6 to have light grey color */
+h1, h2, h3, h4 {
+    color: lightgrey;
+}
+
+/*color li and ol */
+ol {
+    margin-left: 20px;
+    color: lightblue !important;
+}
+
+
+/* Styles for the div with class quarto-title-meta-heading */
+.quarto-title-meta-heading {
+    color: darkgrey; /* Light grey color */
+}
+
+/* Styles for the div with class quarto-categories */
+.quarto-categories {
+    color: #990099; /* Light grey color */
+}
+
+
+/*the box where the code output is displayed */
+pre code {
+    background-color: white; /* Light grey background */
+    padding: 10px; /* Add padding for better readability */
+    border-radius: 5px; /* Rounded corners */
+    overflow-x: auto; /* Add horizontal scroll for long lines */
+    font-family: "Courier New", Courier, monospace; /* Use monospace font for code */
+    color: #990099; /* Dark grey text color */
+}
+/*----------------------------------*/
+
+/*this is for table genrated by kableextra */
+tbody tr {
+    color: white !important;
+}
+tbody tr td {
+    color: white !important;
+}
+th {
+    color: white !important;
+}
+caption {
+    color: white !important;
+}
+
+/*----------------*/
+
+
+/* Container for the TOC */
+/* Style for the TOC container */
+#TOC {
+    position: fixed; /* Fix position relative to the viewport */
+    top: 400px; /* Distance from the top of the viewport */
+}
+
+/* Styles for Python code blocks */
+.sourceCode.python {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: auto; /* Enable horizontal scroll if needed */
+}
+
+

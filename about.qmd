@@ -1,0 +1,164 @@
+---
+style:
+  css: featured_posts/style.css
+---
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cube Animation with Torchlight</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #213343; /* Space-like background color */
+      color: white; /* Text color */
+      position: relative;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Move behind other content */
+    }
+  </style>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, stars = [];
+        const numStars = 30;
+
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            const colors = [0xffffff, 0xffff00, 0xadd8e6]; // white, yellow, light blue
+
+            for (let i = 0; i < numStars; i++) {
+                let geometry = new THREE.SphereGeometry(0.1, 5, 5); // Star-shaped geometry
+                let material = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random() * colors.length)] });
+                let star = new THREE.Mesh(geometry, material);
+
+                star.position.x = (Math.random() - 0.5) * 10;
+                star.position.y = (Math.random() - 0.5) * 10;
+                star.position.z = (Math.random() - 0.5) * 10;
+
+                scene.add(star);
+                stars.push(star);
+            }
+
+            animate();
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            stars.forEach(star => {
+                // Add wobbling effect
+                star.position.x += Math.sin(star.position.z * 2) * 0.01;
+                star.position.y += Math.cos(star.position.x * 3) * 0.02;
+                star.position.z += Math.sin(star.position.y * 4) * 0.02;
+
+                // Check if the star is out of the view, if yes, reset its position
+                if (
+                    star.position.x > 5 || star.position.x < -5 ||
+                    star.position.y > 5 || star.position.y < -5 ||
+                    star.position.z > 5 || star.position.z < -5
+                ) {
+                    star.position.x = (Math.random() - 0.5) * 10;
+                    star.position.y = (Math.random() - 0.5) * 10;
+                    star.position.z = (Math.random() - 0.5) * 10;
+                }
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        init();
+    </script>
+  </body>
+  </body>
+ </head>
+</html>
+```
+
+
+
+<div id="header" style="text-align: center;">
+  <img src="https://media2.giphy.com/media/3o7qE1YN7aBOFPRw8E/giphy.gif?cid=ecf05e471znfcirjxm6vianun3sbijamo88oa489zph9lh30&ep=v1_gifs_related&rid=giphy.gif&ct=g" width="200"/>
+</div>
+
+<div id="badges" style="text-align: center;">
+  <a href="https://www.linkedin.com/in/bhattarai1/">
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+</div>
+
+<h1 style="text-align: center;">
+  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
+</h1>
+
+
+## Updates:
+<ul>
+📊 Practising SQL from HackerRank and learning DSA in LeetCode<br>
+🧠 Mastering neural network architecture and learning PyTorch from Coursera and DataCamp<br>
+</ul>
+
+#### Recently completed:
+<ul>
+🖥 Worked on 4TB data on NCAR supercomputer, for developing Machine Learning model and a web-interactive dashboard<br>
+🚀 Learnt Big Data System with Apache Hive & Impala<br>
+📚 Read Machine Learning with Scikit Learn book by O'Reilly<br>
+🌐 Initiated a new Python project for a new blog in ML 
+</ul>
+
+## Tech Skills
+1. Python 🐍
+2. R 📊
+3. SQL 💾
+4. SAS 📈
+5. Big Data 🌐
+6. Machine Learning 🤖
+7. Data Visualization 📊
+8. Geospatial Analysis 🌍
+9. Data Mining ⛏️
+10. High performance computing 🚀
+11. Bash Scripting 📜
+12. Web Development 🌐
+
+## Blogs:
+<ul>
+    <li><a href="https://sujan-bhattarai12.github.io/posts/southAsia_crop/">Forecasting Air-Quality Emission 🌬️</a></li>
+    <li><a href="https://sujan-bhattarai12.github.io/posts/economic_zone/">Geospatial Analysis 🗺️</a></li>
+    <li><a href="https://sujan-bhattarai12.github.io/posts/12-09-2020-AI-ethics/">Artificial Intelligence and Nature Conservation 🌿</a></li>
+</ul>
+
+
+## Statistics:
+[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=sujan-bhattarai12&theme=dark&background=000000)](https://git.io/streak-stats?v=1) 📈
+
+### Thanks for Visiting
+If you have come this far, revise Hadoop CLI(HDFS DFS) commands, extremely useful if you are using SQL for Big data analysis)
+[Apache_CLI](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+
+
+

@@ -1,0 +1,9 @@
+---
+title: "Also Curious about:"
+listing: 
+  contents: health_posts # all Quarto docs in the `posts` directory will be included on your listing page
+  type: grid # or `default` or `table`; each type has its own set of yaml options to include
+  grid-columns: 2
+  sort: "date desc" # can also sort on more than one field
+  categories: false # allows you to sort posts by assigned categories 
+---
