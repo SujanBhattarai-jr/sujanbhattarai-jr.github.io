@@ -387,13 +387,13 @@ memory usage: 204.6 KB</code></pre>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print the model score</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Model score: </span><span class="sc">{</span>pipeline<span class="sc">.</span>score(X_test, y_test)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Model score: 0.9974811682991103</code></pre>
+<pre><code>Model score: 0.9974653561686705</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared error</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>squared_error <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean squared error: </span><span class="sc">{</span>squared_error<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean squared error: 33.67068355321038</code></pre>
+<pre><code>Mean squared error: 33.88205346734622</code></pre>
 </div>
 </div>
 <p>Doing stochastic gradient descent did not improve anything in the model. First thing to note is that, model is already 99% accurate. Using SGD appraoch increased accuracy by 0.0001, which is not a massive improvement. But when model imporoved by that factor, the MAE value increased. This means bias increased, which we don’t want. <strong>cross validation</strong></p>
@@ -488,7 +488,7 @@ memory usage: 204.6 KB</code></pre>
 [30]    train-rmse:1.64633+0.06258  test-rmse:6.04879+2.23034
 [40]    train-rmse:1.29777+0.05879  test-rmse:6.02162+2.23979
 [50]    train-rmse:1.02154+0.05521  test-rmse:5.99733+2.23518
-[53]    train-rmse:0.95655+0.05754  test-rmse:6.00205+2.23493</code></pre>
+[54]    train-rmse:0.93376+0.05252  test-rmse:6.00336+2.23321</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the optimal number of boosting rounds</span></span>
@@ -510,8 +510,7 @@ memory usage: 204.6 KB</code></pre>
 <pre><code>[0] train-rmse:79.30237 validation-rmse:81.82718
 [10]    train-rmse:4.39108  validation-rmse:6.71929
 [20]    train-rmse:2.09378  validation-rmse:5.87060
-[30]    train-rmse:1.63902  validation-rmse:5.85949
-[31]    train-rmse:1.59516  validation-rmse:5.86161</code></pre>
+[30]    train-rmse:1.63902  validation-rmse:5.85949</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># #predict on the the test matrix</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> model_xgb.predict(dtest_reg)</span>
