@@ -1,6 +1,6 @@
 ---
 title: "Ocean Carbon prediction:serving Calcofi dataset to make data driven Decision"
-image: "featured_projects/calcofi/data/earth.png"
+image: "/featured_projects/calcofi/data/earth.jpg"
 Date: "2023-12-15"
 format:
   html:

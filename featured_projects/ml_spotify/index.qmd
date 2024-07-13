@@ -1,5 +1,6 @@
 ---
 title: "Comparing competing Machine Learning models in classifying Spotify songs"
+image: "/featured_projects/ml_spotify/image.jpg"
 date: 2024-01-20
 format:
   html:

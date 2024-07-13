@@ -387,13 +387,13 @@ memory usage: 204.6 KB</code></pre>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print the model score</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Model score: </span><span class="sc">{</span>pipeline<span class="sc">.</span>score(X_test, y_test)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Model score: 0.9974653561686705</code></pre>
+<pre><code>Model score: 0.9974991316613688</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean squared error</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>squared_error <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean squared error: </span><span class="sc">{</span>squared_error<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean squared error: 33.88205346734622</code></pre>
+<pre><code>Mean squared error: 33.43055687624876</code></pre>
 </div>
 </div>
 <p>Doing stochastic gradient descent did not improve anything in the model. First thing to note is that, model is already 99% accurate. Using SGD appraoch increased accuracy by 0.0001, which is not a massive improvement. But when model imporoved by that factor, the MAE value increased. This means bias increased, which we don’t want. <strong>cross validation</strong></p>
