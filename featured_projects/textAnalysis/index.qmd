@@ -1,6 +1,6 @@
 ---
 title: "Measuring the most common word in new articles on climate science"
-image: "/featured_projects/textanalysis/data/news.jpg"
+image: "/featured_projects/textanalysis/news.jpg"
 Date: "2023-12-15"
 format:
   html:

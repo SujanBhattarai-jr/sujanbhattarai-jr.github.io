@@ -310,25 +310,25 @@ calculate metrics:
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   topics CaoJuan2009 Deveaud2014
-1      20   0.1742275    1.300767
-2      19   0.1786294    1.354675
-3      18   0.1420013    1.413899
-4      17   0.1857903    1.395219
-5      16   0.1715692    1.440370
-6      15   0.2458650    1.417818
-7      14   0.2249723    1.447064
-8      13   0.2422587    1.494927
-9      12   0.2388579    1.496121
-10     11   0.2714194    1.525100
-11     10   0.2811137    1.553163
-12      9   0.3285271    1.523071
-13      8   0.3811415    1.498411
-14      7   0.4343982    1.503847
-15      6   0.3535829    1.623160
-16      5   0.5015166    1.523753
-17      4   0.4607067    1.589695
-18      3   0.4851089    1.597421
-19      2   0.5878760    1.576007</code></pre>
+1      20   0.1741799    1.324319
+2      19   0.2001762    1.325645
+3      18   0.1947519    1.376274
+4      17   0.2023208    1.384789
+5      16   0.2326418    1.389239
+6      15   0.2101259    1.433620
+7      14   0.2533373    1.437287
+8      13   0.2909487    1.451976
+9      12   0.2621762    1.486091
+10     11   0.2857257    1.502806
+11     10   0.2518309    1.586331
+12      9   0.3248986    1.574296
+13      8   0.3578162    1.549148
+14      7   0.4330922    1.486113
+15      6   0.4270767    1.557415
+16      5   0.4469745    1.567938
+17      4   0.5062887    1.550996
+18      3   0.5057868    1.562577
+19      2   0.5817909    1.571584</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -351,23 +351,23 @@ calculate metrics:
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the top terms in each topic</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">terms</span>(topicModel_k2, <span class="dv">10</span>) <span class="co"># Most probable words in each topic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Topic 1         Topic 2 
- [1,] "polar"         "bears" 
- [2,] "bear"          "polar" 
- [3,] "bears"         "land"  
- [4,] "ice"           "ice"   
- [5,] "arctic"        "energy"
- [6,] "international" "study" 
- [7,] "day"           "said"  
- [8,] "climate"       "sea"   
- [9,] "animals"       "time"  
-[10,] "sea"           "seals" </code></pre>
+<pre><code>      Topic 1  Topic 2        
+ [1,] "bears"  "polar"        
+ [2,] "polar"  "bear"         
+ [3,] "ice"    "bears"        
+ [4,] "land"   "sea"          
+ [5,] "energy" "said"         
+ [6,] "study"  "ice"          
+ [7,] "said"   "international"
+ [8,] "time"   "arctic"       
+ [9,] "bear"   "animals"      
+[10,] "food"   "day"          </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tmResult <span class="ot">&lt;-</span> <span class="fu">posterior</span>(topicModel_k2)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">terms</span>(topicModel_k2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Topic 1 Topic 2 
-"polar" "bears" </code></pre>
+"bears" "polar" </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> tmResult<span class="sc">$</span>topics</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> tmResult<span class="sc">$</span>terms</span>
@@ -395,108 +395,108 @@ calculate metrics:
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">polar</td>
-<td style="text-align: right;">0.0627110</td>
+<td style="text-align: left;">bears</td>
+<td style="text-align: right;">0.0538575</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">polar</td>
+<td style="text-align: right;">0.0342213</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">ice</td>
+<td style="text-align: right;">0.0179196</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">land</td>
+<td style="text-align: right;">0.0168081</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">energy</td>
+<td style="text-align: right;">0.0144616</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">study</td>
+<td style="text-align: right;">0.0142146</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">said</td>
+<td style="text-align: right;">0.0096452</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">time</td>
+<td style="text-align: right;">0.0091512</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">bear</td>
-<td style="text-align: right;">0.0422563</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">bears</td>
-<td style="text-align: right;">0.0284536</td>
+<td style="text-align: right;">0.0084102</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">ice</td>
-<td style="text-align: right;">0.0129879</td>
+<td style="text-align: left;">food</td>
+<td style="text-align: right;">0.0081632</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">arctic</td>
-<td style="text-align: right;">0.0108260</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">international</td>
-<td style="text-align: right;">0.0098282</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">day</td>
-<td style="text-align: right;">0.0089967</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">climate</td>
-<td style="text-align: right;">0.0088304</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">animals</td>
-<td style="text-align: right;">0.0083315</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">sea</td>
-<td style="text-align: right;">0.0083315</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">bears</td>
-<td style="text-align: right;">0.0562931</td>
+<td style="text-align: left;">seals</td>
+<td style="text-align: right;">0.0081632</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">polar</td>
-<td style="text-align: right;">0.0323125</td>
+<td style="text-align: right;">0.0597934</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">land</td>
-<td style="text-align: right;">0.0166518</td>
+<td style="text-align: left;">bear</td>
+<td style="text-align: right;">0.0376234</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">ice</td>
-<td style="text-align: right;">0.0153059</td>
+<td style="text-align: left;">bears</td>
+<td style="text-align: right;">0.0320398</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">energy</td>
-<td style="text-align: right;">0.0143271</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">study</td>
-<td style="text-align: right;">0.0142048</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">said</td>
-<td style="text-align: right;">0.0115131</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">sea</td>
-<td style="text-align: right;">0.0094332</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">time</td>
-<td style="text-align: right;">0.0093108</td>
+<td style="text-align: right;">0.0115120</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">seals</td>
-<td style="text-align: right;">0.0080873</td>
+<td style="text-align: left;">said</td>
+<td style="text-align: right;">0.0097055</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">research</td>
-<td style="text-align: right;">0.0080873</td>
+<td style="text-align: left;">ice</td>
+<td style="text-align: right;">0.0095413</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">international</td>
+<td style="text-align: right;">0.0092129</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">arctic</td>
+<td style="text-align: right;">0.0090487</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">animals</td>
+<td style="text-align: right;">0.0082275</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">day</td>
+<td style="text-align: right;">0.0080633</td>
 </tr>
 </tbody>
 </table>
