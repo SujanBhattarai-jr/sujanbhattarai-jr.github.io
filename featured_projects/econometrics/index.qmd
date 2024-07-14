@@ -3,7 +3,7 @@ title: "Applied Statistics for Social Sciences: How incentivizing household fail
 Date: "2023-08-25"
 format:
   html:
-    toc: true
+    toc: false
     html-math-method: katex
     css: /featured_style_projects.css
 author:

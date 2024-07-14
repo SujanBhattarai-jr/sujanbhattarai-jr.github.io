@@ -4,7 +4,7 @@ image: "static_image/infographics.png"
 date : "2024-03-05"
 format:
   html:
-    toc: true
+    toc: false
     html-math-method: katex
     css: featured_style_projects.css
 author:
