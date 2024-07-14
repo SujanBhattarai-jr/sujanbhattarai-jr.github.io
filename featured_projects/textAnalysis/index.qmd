@@ -1,5 +1,5 @@
 ---
-title: "Measuring the most common word in new articles on climate science"
+title: "Identifying the most common word in articles on climate science"
 image: "/featured_projects/textanalysis/news.jpg"
 Date: "2023-12-15"
 format:
@@ -16,7 +16,6 @@ editor:
     wrap: 72
 engine: knitr
 ---
-#### Introduction
 
 In today's era of burgeoning information, understanding the predominant themes and trends in vast volumes of text data is crucial for extracting meaningful insights. This project focuses on leveraging Natural Language Processing (NLP) techniques to analyze a collection of articles centered on climate science. By employing advanced computational methods, we aim to uncover the most prevalent topics discussed across these articles, shedding light on key issues and their interconnectedness within the domain of climate science.
 

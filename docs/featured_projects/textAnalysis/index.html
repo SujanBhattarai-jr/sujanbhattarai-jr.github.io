@@ -8,7 +8,7 @@
 
 <meta name="author" content="Sujan Bhattarai">
 
-<title>Measuring the most common word in new articles on climate science</title>
+<title>Identifying the most common word in articles on climate science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Measuring the most common word in new articles on climate science</h1>
+<h1 class="title">Identifying the most common word in articles on climate science</h1>
   <div class="quarto-categories">
     <div class="quarto-category">NLP</div>
     <div class="quarto-category">R</div>
@@ -177,8 +177,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction" class="level4">
-<h4 class="anchored" data-anchor-id="introduction">Introduction</h4>
 <p>In today’s era of burgeoning information, understanding the predominant themes and trends in vast volumes of text data is crucial for extracting meaningful insights. This project focuses on leveraging Natural Language Processing (NLP) techniques to analyze a collection of articles centered on climate science. By employing advanced computational methods, we aim to uncover the most prevalent topics discussed across these articles, shedding light on key issues and their interconnectedness within the domain of climate science.</p>
 <p>Objectives 1. Data Collection and Preparation Data Retrieval: Obtain a comprehensive dataset comprising articles related to climate science, sourced from diverse publications. Data Cleaning: Standardize and preprocess the text data to remove noise, such as URLs, dates, and duplicates, ensuring a clean corpus for analysis. 2. Topic Modeling and Optimization Topic Extraction: Apply Latent Dirichlet Allocation (LDA) to identify latent topics within the article corpus. Optimization: Determine the optimal number of topics using quantitative metrics such as CaoJuan2009 and Deveaud2014, ensuring robust and interpretable results. 3. Insights Generation Topic Interpretation: Analyze and interpret the extracted topics to discern prevalent themes and their implications in climate science research. Visualization: Visualize topic distributions and top terms to facilitate intuitive understanding and exploration of thematic clusters.</p>
 <div class="cell">
@@ -310,25 +308,25 @@ calculate metrics:
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   topics CaoJuan2009 Deveaud2014
-1      20   0.1772879    1.315331
-2      19   0.2010516    1.346123
-3      18   0.2230256    1.332259
-4      17   0.2330089    1.360826
-5      16   0.2340249    1.392825
-6      15   0.2644767    1.378697
-7      14   0.2457606    1.464450
-8      13   0.2462769    1.480066
-9      12   0.2657727    1.520338
-10     11   0.2953084    1.509858
-11     10   0.3094999    1.523014
-12      9   0.3157522    1.519622
-13      8   0.3873199    1.483421
-14      7   0.3590052    1.537329
-15      6   0.3671024    1.556525
-16      5   0.4751929    1.546892
-17      4   0.5086420    1.560440
-18      3   0.5099931    1.637603
-19      2   0.5462848    1.604818</code></pre>
+1      20   0.2021806    1.280795
+2      19   0.1652779    1.347815
+3      18   0.1912704    1.356557
+4      17   0.1834667    1.424068
+5      16   0.2282236    1.425089
+6      15   0.2219616    1.427850
+7      14   0.2434244    1.446005
+8      13   0.2632456    1.460039
+9      12   0.2912719    1.465719
+10     11   0.2846825    1.541177
+11     10   0.2870910    1.553476
+12      9   0.2965633    1.588889
+13      8   0.3608896    1.530323
+14      7   0.3980003    1.496667
+15      6   0.3988200    1.551803
+16      5   0.4807731    1.520405
+17      4   0.5353746    1.548122
+18      3   0.4823344    1.609850
+19      2   0.5691497    1.536396</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -351,23 +349,23 @@ calculate metrics:
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the top terms in each topic</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">terms</span>(topicModel_k2, <span class="dv">10</span>) <span class="co"># Most probable words in each topic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Topic 1         Topic 2  
- [1,] "polar"         "bears"  
- [2,] "bear"          "polar"  
- [3,] "bears"         "ice"    
- [4,] "arctic"        "land"   
- [5,] "ice"           "energy" 
- [6,] "international" "study"  
- [7,] "day"           "said"   
- [8,] "animals"       "sea"    
- [9,] "will"          "time"   
-[10,] "change"        "climate"</code></pre>
+<pre><code>      Topic 1  Topic 2        
+ [1,] "bears"  "polar"        
+ [2,] "polar"  "bear"         
+ [3,] "land"   "bears"        
+ [4,] "energy" "ice"          
+ [5,] "ice"    "international"
+ [6,] "study"  "arctic"       
+ [7,] "said"   "day"          
+ [8,] "sea"    "will"         
+ [9,] "time"   "animals"      
+[10,] "bear"   "sea"          </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tmResult <span class="ot">&lt;-</span> <span class="fu">posterior</span>(topicModel_k2)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">terms</span>(topicModel_k2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Topic 1 Topic 2 
-"polar" "bears" </code></pre>
+"bears" "polar" </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> tmResult<span class="sc">$</span>topics</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> tmResult<span class="sc">$</span>terms</span>
@@ -395,108 +393,103 @@ calculate metrics:
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
+<td style="text-align: left;">bears</td>
+<td style="text-align: right;">0.0577475</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
 <td style="text-align: left;">polar</td>
-<td style="text-align: right;">0.0665901</td>
+<td style="text-align: right;">0.0339886</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">land</td>
+<td style="text-align: right;">0.0167543</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">energy</td>
+<td style="text-align: right;">0.0144153</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">ice</td>
+<td style="text-align: right;">0.0144153</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">study</td>
+<td style="text-align: right;">0.0142922</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">said</td>
+<td style="text-align: right;">0.0118302</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">sea</td>
+<td style="text-align: right;">0.0101067</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">time</td>
+<td style="text-align: right;">0.0093681</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">bear</td>
-<td style="text-align: right;">0.0405691</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">bears</td>
-<td style="text-align: right;">0.0317828</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">arctic</td>
-<td style="text-align: right;">0.0118446</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">ice</td>
-<td style="text-align: right;">0.0103239</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">international</td>
-<td style="text-align: right;">0.0099860</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">day</td>
-<td style="text-align: right;">0.0091411</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">animals</td>
-<td style="text-align: right;">0.0084653</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">will</td>
-<td style="text-align: right;">0.0082963</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">change</td>
-<td style="text-align: right;">0.0072825</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">hunting</td>
-<td style="text-align: right;">0.0072825</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">bears</td>
-<td style="text-align: right;">0.0535902</td>
+<td style="text-align: right;">0.0087526</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">polar</td>
-<td style="text-align: right;">0.0298852</td>
+<td style="text-align: right;">0.0602147</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">bear</td>
+<td style="text-align: right;">0.0372899</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">bears</td>
+<td style="text-align: right;">0.0267346</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">ice</td>
-<td style="text-align: right;">0.0171861</td>
+<td style="text-align: right;">0.0142002</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">land</td>
-<td style="text-align: right;">0.0164605</td>
+<td style="text-align: left;">international</td>
+<td style="text-align: right;">0.0097472</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">energy</td>
-<td style="text-align: right;">0.0141625</td>
+<td style="text-align: left;">arctic</td>
+<td style="text-align: right;">0.0095822</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">study</td>
-<td style="text-align: right;">0.0140416</td>
+<td style="text-align: left;">day</td>
+<td style="text-align: right;">0.0089225</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">said</td>
-<td style="text-align: right;">0.0117436</td>
+<td style="text-align: left;">will</td>
+<td style="text-align: right;">0.0085927</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">animals</td>
+<td style="text-align: right;">0.0082628</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">sea</td>
-<td style="text-align: right;">0.0102923</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">time</td>
-<td style="text-align: right;">0.0092038</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">climate</td>
-<td style="text-align: right;">0.0089619</td>
+<td style="text-align: right;">0.0074382</td>
 </tr>
 </tbody>
 </table>
@@ -523,7 +516,6 @@ calculate metrics:
 <p>Overall, the topics extracted from the articles provide valuable insights that polar bears are not talked about in any other topics, other than explicitly discussing polar bears. Exploring more articles and topics could provide more insights on the themes discussed in the articles, but for my subset of articles, polar bears are not discussed in any other context other than research and when discussing international ice days.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
