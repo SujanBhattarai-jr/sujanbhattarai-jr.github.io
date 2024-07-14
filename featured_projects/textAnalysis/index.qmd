@@ -1,6 +1,6 @@
 ---
 title: "Identifying the most common word in articles on climate science"
-image: "/featured_projects/textanalysis/paper.jpg"
+image: "/featured_projects/textAnalysis/image.jpg"
 Date: "2023-12-15"
 format:
   html:
