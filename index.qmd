@@ -129,27 +129,27 @@
     <div class="colu">
       <div class="colus">
         <h3>Data Science</h3>
-        <p>Enjoys analytical thinking, data-driven decisions, and content creation about Data Science in LinkedIn.</p>
+        <p>Enjoys analytical thinking, data-driven decisions, and content creation about Data Science</p>
       </div>
       <div class="colus">
         <h3>Machine Learning</h3>
-        <p>Strong understanding of maths in ML models, neural networks, tree based models, regressions</p>
+        <p>Strong understanding of maths in ML algorithms: neural networks, tree based models, regressions</p>
       </div>
       <div class="colus">
         <h3>Causal Inference</h3>
-        <p>Experience with DID estimate, panel data, inverse weighted regression, A/B testing</p>
+        <p>Experience with First order effects, DID estimate, panel data, inverse weighted regression</p>
       </div>
       <div class="colus">
         <h3>Database and Cloud</h3>
-        <p>Self-taught in Big Data and certified in Snowflake for data warehousing, proficient at RDBMS with SQL. </p>
+        <p>Proficient at RDBMS, experience with snowflake and big data, concepts on HDFS and Hadoop </p>
       </div>
       <div class="colus">
         <h3>Applied Statistics</h3>
-        <p> I have Run simulations sampling, randomize experimental designs, calculate uncertainties with SOBOL and FAST methods</p>
+        <p> Ran modelling simulations, randomize experimental designs, measure parameters uncertainties</p>
       </div>
       <div class="colus">
         <h3>Data Visualization</h3>
-        <p>Expert in ggplot for scientific aesthetics and informative visualizations in R. Used most ggplot children packages</p>
+        <p> Knowledge of data visualization concepts, expert at ggplot and ggplot-children packages</p>
       </div>
     </div>
   </div>
