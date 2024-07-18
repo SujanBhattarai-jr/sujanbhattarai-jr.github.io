@@ -140,11 +140,11 @@
         <p>Experience with First order effects, DID estimate, panel data, inverse weighted regression</p>
       </div>
       <div class="colus">
-        <h3>Database and Cloud</h3>
+        <h3>Databases</h3>
         <p>Proficient at RDBMS, experience with snowflake and big data, concepts on HDFS and Hadoop </p>
       </div>
       <div class="colus">
-        <h3>Applied Statistics</h3>
+        <h3>Modelling</h3>
         <p> Ran modelling simulations, randomize experimental designs, measure parameters uncertainties</p>
       </div>
       <div class="colus">
