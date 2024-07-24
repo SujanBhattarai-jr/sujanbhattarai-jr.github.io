@@ -182,24 +182,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>
-Exploring 4 competing popular machine learning model to classify a song into either of the two genre. The dataset is from Spotify API and it contains 18 audio features of the song. The dataset is filtered to include only the tracks of the two genres, Underground Rap and dnb. The models are k-nearest neighbor, decision tree, bagged tree and random forest. The models are compared based on their accuracy, sensitivity and specificity. The best model is then selected based on the comparison.
+In this project, I explored four popular machine learning models (K-Nearest Neighbors, Decision Tree, Bagged Tree, and Random Forest) to classify Spotify songs into two genres: Underground Rap and Drum and Bass (dnb). I used a dataset from the Spotify API, containing 18 audio features of each song. The goal was to determine the best model for this classification task based on accuracy, sensitivity, and specificity.
 </p>
-<section id="load-required-libraries" class="level3">
-<h3 class="anchored" data-anchor-id="load-required-libraries">load required libraries</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spotifyr) <span class="co">#API interaction</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(recipes)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="model-comparison" class="level4">
+<h4 class="anchored" data-anchor-id="model-comparison">Model Comparison</h4>
+<ul>
+<li><p>Implemented and tuned each model using grid search and cross-validation</p></li>
+<li><p>Evaluated model performance using accuracy, sensitivity, specificity, and F1 score</p></li>
+<li><p>Visualized model performance using confusion matrices and ROC-AUC curves</p></li>
+</ul>
 </section>
-<section id="data-preparation" class="level3">
-<h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
-<p>The data is downloaded from <a href="https://www.kaggle.com/datasets/mrmorj/dataset-of-songs-in-spotify" class="uri">https://www.kaggle.com/datasets/mrmorj/dataset-of-songs-in-spotify</a>.</p>
-<section id="data-cleaning-and-feature-selection" class="level4">
-<h4 class="anchored" data-anchor-id="data-cleaning-and-feature-selection">Data cleaning and feature selection</h4>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<ul>
+<li><p>Random Forest model achieved the highest accuracy (92.1%) and F1 score (0.921)</p></li>
+<li><p>Bagged Tree model showed the highest sensitivity (0.943)</p></li>
+<li><p>Decision Tree model had the highest specificity (0.933)</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load required libaries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spotifyr) <span class="co">#API interaction</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(recipes)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-preparation" class="level4">
+<h4 class="anchored" data-anchor-id="data-preparation">Data Preparation</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the online spotify data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>genre <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"genres_v2.csv"</span>)</span>
@@ -217,9 +227,8 @@ Exploring 4 competing popular machine learning model to classify a song into eit
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">ifelse</span>(genre <span class="sc">==</span> <span class="st">"Underground Rap"</span>, <span class="st">"URap"</span>, genre))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
-<section id="data-exploration" class="level3">
-<h3 class="anchored" data-anchor-id="data-exploration">Data Exploration</h3>
+<section id="data-exploration" class="level4">
+<h4 class="anchored" data-anchor-id="data-exploration">Data Exploration</h4>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove columns that you won't be feeding model</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>spotify <span class="ot">&lt;-</span> spotify_data  <span class="sc">%&gt;%</span>  <span class="fu">select</span>(song_name, genre, danceability<span class="sc">:</span> tempo) <span class="sc">%&gt;%</span> </span>
@@ -350,8 +359,6 @@ Exploring 4 competing popular machine learning model to classify a song into eit
 </table>
 </div>
 </div>
-<section id="visual-interpretation-of-the-data" class="level5">
-<h5 class="anchored" data-anchor-id="visual-interpretation-of-the-data">Visual interpretation of the data</h5>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#difference between genres for some of the audio features</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#---drop song name, not required for models</span></span>
@@ -844,8 +851,8 @@ Exploring 4 competing popular machine learning model to classify a song into eit
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rename</span>(<span class="st">"random forest estimate"</span> <span class="ot">=</span> .estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="model-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="model-comparison"><strong>Model Comparison</strong></h3>
+<section id="model-comparison-1" class="level3">
+<h3 class="anchored" data-anchor-id="model-comparison-1"><strong>Model Comparison</strong></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Compare the accuracy of all models and create a dataframe</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -892,7 +899,7 @@ Exploring 4 competing popular machine learning model to classify a song into eit
 </section>
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong></h3>
-<p>Of the Four models tested, all models has excellent accuracy, sensitivity and specificity. Most models were able to classify the models as either of the two genre. If we are interested even in fractional measure in regards to accuracy, then random forest model is the best model to use. The confusion matrix of this model shows that it only missed 8 observation where it classified the genre as URap when it was actually dnb. And, the model also missed 8 observation where it classified the genre as dnb when it was actually URap. With such excellent precision and recall, random forest model works best for this dataset.</p>
+<p>This project demonstrated the effectiveness of ensemble learning methods (Bagged Tree and Random Forest) in classifying Spotify songs into two genres. The results can be used to inform music recommendation systems or genre classification tasks. I showcased my skills in data preprocessing, model implementation, hyperparameter tuning, and performance evaluation.</p>
 
 
 </section>

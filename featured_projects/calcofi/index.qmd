@@ -1,5 +1,5 @@
 ---
-title: "Ocean Carbon prediction:serving Calcofi dataset to make data driven Decision"
+title: "Ocean Carbon prediction: which ML algorithm should I use for higher accuracy?"
 image: "/featured_projects/calcofi/data/earth.jpg"
 Date: "2023-12-15"
 format:
@@ -17,16 +17,33 @@ editor:
 engine: knitr
 ---
 
-CalCOFI, the California Cooperative Oceanic Fisheries Investigations, was established in 1949 to investigate the ecological factors contributing to the collapse of the Pacific sardine population off California. Over time, its scope expanded to encompass the entire ecosystem of the southern California Current System, utilizing cutting-edge observation techniques. Its extensive time series data provides invaluable insights into the long-term impacts of environmental changes on marine ecosystems and the communities reliant on them, not only within the California Current System but also extending to the North Pacific and beyond on an international scale.
+XYZ, name hidden for security purpose,
+was established in 1910 to investigate the ecological factors
+contributing to the collapse of the Pacific sardine population. Its extensive time series data
+provides invaluable insights into the long-term impacts of environmental
+changes on marine ecosystems and the communities reliant on them, not
+only within the California Current System but also extending to the
+North Pacific and beyond on an international scale.
 
-As a part of this project, I am supporting the CALCOFI in predicting the ocean carbon values, which is a crucial part of the marine ecosystem. The dataset contains 12 columns, with 1 response variable and 11 predictors. The response variable is the dissolved inorganic carbon (DIC) concentration in the ocean, which is a key component of the marine carbon cycle. The predictors include various physical and chemical properties of the ocean, such as temperature, salinity, and oxygen concentration.
+As a part of this project, I am supporting the XYZ in predicting the
+ocean carbon values, which is a crucial part of the marine ecosystem.
+The dataset contains 12 columns, with 1 response variable and 11
+predictors. The response variable is the dissolved inorganic carbon
+(DIC) concentration in the ocean, which is a key component of the marine
+carbon cycle. The predictors include various physical and chemical
+properties of the ocean, such as temperature, salinity, and oxygen
+concentration.
 
-The goal of this project is to develop multiple machine learning models that can accurately predict the DIC concentration in the ocean based on the given predictors. This model will help CALCOFI scientists better understand the factors influencing ocean carbon levels and make data-driven decisions to protect marine ecosystems.
+The goal of this project is to develop multiple machine learning models
+that can accurately predict the DIC concentration in the ocean based on
+the given predictors. This model will help CALCOFI scientists better
+understand the factors influencing ocean carbon levels and make
+data-driven decisions to protect marine ecosystems.
 
 # Stepwise Flow of the Project
 
-- **Linear Regression Model with Stochastic Gradient Descent**
-- **Fine Tuned XGBoost Model**
+1.  Linear Regression Model with Stochastic Gradient Descent
+2.  Fine Tuned XGBoost Model
 
 ```{python}
 #hide all warnings
@@ -52,7 +69,9 @@ from sklearn.linear_model import SGDRegressor
 from sklearn.linear_model import Ridge
 ```
 
-**Read the data and store ID:required during submission fo validity check**
+**Read the data and store ID:required during submission fo validity
+check**
+
 ```{python}
 #-----read train and test set
 train_calcofi = pd.read_csv("data/train.csv")
@@ -64,7 +83,13 @@ test_calcofi = test_calcofi.drop(columns=['id'])
 ```
 
 #### Data cleaning
-A model is only as good as the data.This step ensures that columns names are standarized, and the columns with inappropriate values are removed. The data is also checked for missing values. Incase of missing values, they are not imputed, but dropped. The CALCOFI did not provide claer guidance on how value should be imputted. So the best decision is to drop the rows with missing values.
+
+A model is only as good as the data.This step ensures that columns names
+are standarized, and the columns with inappropriate values are removed.
+The data is also checked for missing values. Incase of missing values,
+they are not imputed, but dropped. The CALCOFI did not provide claer
+guidance on how value should be imputted. So the best decision is to
+drop the rows with missing values.
 
 ```{python}
 #----inspect the head and take the insights of data
@@ -79,19 +104,18 @@ test_calcofi.columns = map(str.lower, test_calcofi.columns)
 #remove the unnamed:12 column
 train_calcofi = train_calcofi.drop(columns=['unnamed: 12'])
 train_calcofi.rename(columns={'ta1.x': 'ta1'}, inplace=True)
-
-train_calcofi.head()
-
-#--test the range and distribution of values
-train_calcofi.describe()
-
-# test for NA values
-train_calcofi.info()
 ```
 
-The data looks clean. Now, a relationships betwen columns must be established and known. This helps in understanding the data, and also helps in feature selection. The next step below plots a correlation matrix. This will show those features that has strong relationship with the response variable. 
+The data looks clean. Now, a relationships betwen columns must be
+established and known. This helps in understanding the data, and also
+helps in feature selection. The next step below plots a correlation
+matrix. This will show those features that has strong relationship with
+the response variable.
 
-The reason that the correlation matrix is plotted to see if linear regression can be useful. If the correlation matrix shows strong relationship between the response and predictors, then linear regression can be used. If not, then other models like XGboost must be used.
+The reason that the correlation matrix is plotted to see if linear
+regression can be useful. If the correlation matrix shows strong
+relationship between the response and predictors, then linear regression
+can be used. If not, then other models like XGboost must be used.
 
 ```{python}
 #plot correlation matrix
@@ -105,7 +129,11 @@ plt.show()
 ```
 
 ##### Linear regression model
-For this project, I will delve into using different machine learning models, from the simplest also called the Linear regression, then gradually moving up to the best model, called XGboost, which is also called the Queen of the Machine Learning models.
+
+For this project, I will delve into using different machine learning
+models, from the simplest also called the Linear regression, then
+gradually moving up to the best model, called XGboost, which is also
+called the Queen of the Machine Learning models.
 
 ```{python}
 #select only the predictors columns, and change them to array
@@ -138,11 +166,21 @@ squared_error = mean_squared_error(y_test, y_pred)
 print(f"Mean squared error: {squared_error}")
 ```
 
-The base linear regression model has worked well, with mean squared error of 31, which means the ocean carbon values(DIC) was off by 31 point on average for the prediction test. But, the model can be tuned such that the error can be minimized. The most popular method to do so is the stochastic gradient descent. This approach finds the best local minima, that has the capacity to reduce error but without redcing model Bias for new unseen data.
+The base linear regression model has worked well, with mean squared
+error of 31, which means the ocean carbon values(DIC) was off by 31
+point on average for the prediction test. But, the model can be tuned
+such that the error can be minimized. The most popular method to do so
+is the stochastic gradient descent. This approach finds the best local
+minima, that has the capacity to reduce error but without reducing model
+Bias for new unseen data.
 
-**Stochastic Gradient Descent**
-This approach uses the learning rate (also called eta), to find the minimum cost function. The different between base linear regression and this stochastic Gradient descent is that the base model calculates cost based on optimum values, while stochastic gradient descent calculates based on learning rate on the cost function. Most linear regression models are compataible with this approach, and the model can be improved by using this approach.
-
+**Stochastic Gradient Descent** This approach uses the learning rate
+(also called eta), to find the minimum cost function. The different
+between base linear regression and this stochastic Gradient descent is
+that the base model calculates cost based on optimum values, while
+stochastic gradient descent calculates based on learning rate on the
+cost function. Most linear regression models are compataible with this
+approach, and the model can be improved.
 
 ```{python}
 # Create a pipeline with feature scaling and SGDRegressor
@@ -161,8 +199,13 @@ print(f"Model score: {pipeline.score(X_test, y_test)}")
 squared_error = mean_squared_error(y_test, y_pred)
 print(f"Mean squared error: {squared_error}")
 ```
-Doing stochastic gradient descent did not improve anything in the model. First thing to note is that, model is already 99% accurate. Using SGD appraoch increased accuracy by 0.0001, which is not a massive improvement. But when model imporoved by that factor, the MAE value increased. This means bias increased, which we don't want.
-**cross validation**
+
+Doing stochastic gradient descent did not improve anything in the model.
+First thing to note is that, model is already 99% accurate. Using SGD
+appraoch increased accuracy by 0.0001, which is not a massive
+improvement. But when model imporoved by that factor, the MAE value
+increased. This means bias increased, which we don't want. **cross
+validation**
 
 ```{python}
 # Instantiate the StandardScaler
@@ -183,9 +226,20 @@ kf = KFold(n_splits = 20, shuffle = True, random_state=42)
 cv_scores = cross_val_score(model_cv, X_train_scaled, y_train, cv = kf, scoring='neg_mean_squared_error')
 cv_scores
 ```
-The cross validation output does not show specific pattern. Some blocks of rows obviously don't correlate with rest of the other. See the fourth value, and the 17th, whose scores are away off. There must be something in the data that we should be able to capture. Maybe the temperature or any natural variable on that period has produced different sets of values.
 
-The best number of splits is just 2 for this Dataset. Is it suprising ?? Yes, it is. The way I identified that after testing with higher number of splits. There is somthing odd in the data, which contains off data rows. Maybe temperature or any other variable is off. If I increase the splits, there will always be at least two blocks that CV score will be much higher at least 10 times higher than all other.
+The cross validation output does not show specific pattern. Some blocks
+of rows obviously don't correlate with rest of the other. See the fourth
+value, and the 17th, whose scores are away off. There must be something
+in the data that we should be able to capture. Maybe the temperature or
+any natural variable on that period has produced different sets of
+values.
+
+The best number of splits is just 2 for this Dataset. Is it suprising ??
+Yes, it is. The way I identified that after testing with higher number
+of splits. There is somthing odd in the data, which contains off data
+rows. Maybe temperature or any other variable is off. If I increase the
+splits, there will always be at least two blocks that CV score will be
+much higher at least 10 times higher than all other.
 
 ```{python}
 # Calculate mean squared error using cross-validation
@@ -215,9 +269,12 @@ submission_df.to_csv('linear_cv.csv', index=False)
 ```
 
 #### XGBoost Model
-The next step involves using **XGboost** for making the prediction, Extreme Gradient Boosting, also called the queen of the ML models is one of the most robust models. 
-**Base XGBOOST model (no tuning: Out of Box model)**
-Note:XGBoost works on its own object type, which is Dmatrix. So, datatype conversion is required.
+
+The next step involves using **XGboost** for making the prediction,
+Extreme Gradient Boosting, also called the queen of the ML models is one
+of the most robust models. **Base XGBOOST model (no tuning: Out of Box
+model)** Note:XGBoost works on its own object type, which is Dmatrix.
+So, datatype conversion is required.
 
 ```{python}
 # Create regression matrices, this is requirement for xgboost model
@@ -265,7 +322,6 @@ mse = mean_squared_error(y_test, preds, squared=False)
 print(f"MSE of the test model: {mse:.3f}")
 ```
 
-
 ```{python}
 #change test_calcofi to dmatrix object
 dmatrix_calcofi = xgb.DMatrix(test_calcofi)
@@ -280,7 +336,8 @@ submission_df = pd.DataFrame({'id': test_ids, 'DIC': prediction_on_test_calcofi}
 submission_df.to_csv('xgb_base.csv', index=False)
 ```
 
-**GRID TUNED XGBOOST MODEL
+\*\*GRID TUNED XGBOOST MODEL
+
 ```{python}
 # Define the parameter grid
 gbm_param_grid = {
@@ -340,5 +397,8 @@ mse_lm, mse_xgboost
 mse_lm, mse_xgboost
 ```
 
-The XGboost model has lower Bias, and high accuracy compared to the linear regression model. Thus, I suggest  CALCOFI to use the XGBOOST model for any new incoming data on ocean values. The trained xgboost model can be deployed that has the capacity to updates the model with new data.
- 
+The XGboost model has lower Bias, and high accuracy compared to the
+linear regression model. Thus, I suggest CALCOFI to use the XGBOOST
+model for any new incoming data on ocean values. The trained xgboost
+model can be deployed that has the capacity to updates the model with
+new data.
