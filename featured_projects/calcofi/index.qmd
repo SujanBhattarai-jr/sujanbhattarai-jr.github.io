@@ -136,139 +136,137 @@ gradually moving up to the best model, called XGboost, which is also
 called the Queen of the Machine Learning models.
 
 ```{python}
-#select only the predictors columns, and change them to array
-X = train_calcofi.drop(columns = ['dic', 'id'], axis=1)
+# Select only the predictors columns, and change them to array
+X = train_calcofi.drop(columns=['dic', 'id'], axis=1)
 
-#select only the response column and change it to array
+# Select only the response column and change it to array
 y = train_calcofi['dic']
 
-#split the predictors and response variables from training and testing set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state= 42)
+# Split the data into training, validation, and test sets
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.4, random_state=42)
+X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
 
-#### Linear regression
-# Create a pipeline with StandardScaler and LinearRegression
-model_pipeline = make_pipeline(StandardScaler(), LinearRegression())
+# Define the range of polynomial degrees to fit
+degrees = range(1, 5)  # From 1 to 5
 
-# Fit the model pipeline to the training data
+# Initialize lists to store R^2 scores
+train_r2_scores = []
+val_r2_scores = []
+
+# Loop through each polynomial degree
+for degree in degrees:
+    # Create a pipeline with PolynomialFeatures, StandardScaler, and LinearRegression
+    model_pipeline = make_pipeline(PolynomialFeatures(degree=degree), StandardScaler(), LinearRegression())
+
+    # Fit the model pipeline to the training data
+    model_pipeline.fit(X_train, y_train)
+
+    # Calculate R^2 on the training set
+    train_r2 = model_pipeline.score(X_train, y_train)
+    train_r2_scores.append(train_r2)
+
+    # Calculate R^2 on the validation set
+    val_r2 = model_pipeline.score(X_val, y_val)
+    val_r2_scores.append(val_r2)
+
+    # Print the results for each degree
+    print(f"Degree: {degree}")
+    print(f"  R^2 on training set: {train_r2}")
+    print(f"  R^2 on validation set: {val_r2}")
+    print("-" * 40)
+
+# Plotting the R^2 scores for training and validation sets
+plt.figure(figsize=(10, 6))
+plt.plot(degrees, train_r2_scores, label='Training R^2', marker='o')
+plt.plot(degrees, val_r2_scores, label='Validation R^2', marker='o')
+plt.xlabel('Polynomial Degree')
+plt.ylabel('R^2 Score')
+plt.title('Polynomial Degree vs. R^2 Score')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+```
+
+
+```{python}
+#from the above sample, it is clear that either degree 1 or 2 is best
+# Define the polynomial degree
+degree = 1
+
+# Define the range of regularization parameters (alpha values) to test
+alphas = np.logspace(-3, 3,  10)  # e.g., 10^-4 to 10^4
+
+# Initialize lists to store R^2 scores
+train_r2_scores = []
+val_r2_scores = []
+
+# Loop through each alpha value
+for alpha in alphas:
+    # Create a pipeline with PolynomialFeatures, StandardScaler, and Ridge regression
+    model_pipeline = make_pipeline(PolynomialFeatures(degree=degree), StandardScaler(), Ridge(alpha=alpha))
+
+    # Fit the model pipeline to the training data
+    model_pipeline.fit(X_train, y_train)
+
+    # Calculate R^2 on the training set
+    train_r2 = model_pipeline.score(X_train, y_train)
+    train_r2_scores.append(train_r2)
+
+    # Calculate R^2 on the validation set
+    val_r2 = model_pipeline.score(X_val, y_val)
+    val_r2_scores.append(val_r2)
+
+    # Print the results for each alpha
+    print(f"Alpha: {alpha}")
+    print(f"  R^2 on training set: {train_r2}")
+    print(f"  R^2 on validation set: {val_r2}")
+    print("-" * 40)
+
+# Plotting the R^2 scores for training and validation sets
+plt.figure(figsize=(12, 6))
+plt.plot(alphas, train_r2_scores, label='Training R^2', marker='o', linestyle='-', color='b')
+plt.plot(alphas, val_r2_scores, label='Validation R^2', marker='o', linestyle='-', color='r')
+plt.xscale('log')  # Log scale for alpha values
+plt.xlabel('Regularization Parameter (Alpha)')
+plt.ylabel('R^2 Score')
+plt.title('Regularization Parameter (Alpha) vs. R^2 Score')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+```{python}
+#finalize the model
+# Split data into training and validation sets
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Define the polynomial degree and regularization parameter (lambda)
+degree = 1
+alpha = 50  # Regularization parameter
+
+# Create and fit the model pipeline
+model_pipeline = make_pipeline(
+    PolynomialFeatures(degree=degree),
+    StandardScaler(),
+    Ridge(alpha=alpha)
+)
+
+# Fit the model to the training data
 model_pipeline.fit(X_train, y_train)
 
-# Calculate R^2 (coefficient of determination) on the training set
-r_sq = model_pipeline.score(X_train, y_train)
+# Evaluate the model
+train_r2 = model_pipeline.score(X_train, y_train)
+val_r2 = model_pipeline.score(X_val, y_val)
 
-# Print the coefficient of determination
-print(f"Coefficient of determination (measure of variability in training set): {r_sq}")
-
-# predict on test set from model
-y_pred = model_pipeline.predict(X_test)
-
-# Assuming y_test contains the actual labels/targets for the test set
-squared_error = mean_squared_error(y_test, y_pred)
-print(f"Mean squared error: {squared_error}")
+print(f"Training R^2 score: {train_r2}")
+print(f"Validation R^2 score: {val_r2}")
 ```
 
 The base linear regression model has worked well, with mean squared
-error of 31, which means the ocean carbon values(DIC) was off by 31
-point on average for the prediction test. But, the model can be tuned
-such that the error can be minimized. The most popular method to do so
-is the stochastic gradient descent. This approach finds the best local
-minima, that has the capacity to reduce error but without reducing model
-Bias for new unseen data.
+error of 36 on testing set, which means the ocean carbon values(DIC) was off by 36 point on average for the prediction test.
 
-**Stochastic Gradient Descent** This approach uses the learning rate
-(also called eta), to find the minimum cost function. The different
-between base linear regression and this stochastic Gradient descent is
-that the base model calculates cost based on optimum values, while
-stochastic gradient descent calculates based on learning rate on the
-cost function. Most linear regression models are compataible with this
-approach, and the model can be improved.
-
-```{python}
-# Create a pipeline with feature scaling and SGDRegressor
-pipeline = make_pipeline(StandardScaler(), SGDRegressor(max_iter=2000, learning_rate='constant', eta0=0.0009))
-
-# Fit the model
-pipeline.fit(X_train, y_train)
-
-# Make predictions
-y_pred = pipeline.predict(X_test)
-
-#print the model score
-print(f"Model score: {pipeline.score(X_test, y_test)}")
-
-# Calculate mean squared error
-squared_error = mean_squared_error(y_test, y_pred)
-print(f"Mean squared error: {squared_error}")
-```
-
-Doing stochastic gradient descent did not improve anything in the model.
-First thing to note is that, model is already 99% accurate. Using SGD
-appraoch increased accuracy by 0.0001, which is not a massive
-improvement. But when model imporoved by that factor, the MAE value
-increased. This means bias increased, which we don't want. **cross
-validation**
-
-```{python}
-# Instantiate the StandardScaler
-scaler = StandardScaler()
-
-# Fit and transform the training data
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-test_calcofi_scaled = scaler.transform(test_calcofi)
-
-#instantiate the model
-model_cv = LinearRegression()
-
-# Define KFold cross-validation strategy
-kf = KFold(n_splits = 20, shuffle = True, random_state=42)
-
-# Perform cross-validation
-cv_scores = cross_val_score(model_cv, X_train_scaled, y_train, cv = kf, scoring='neg_mean_squared_error')
-cv_scores
-```
-
-The cross validation output does not show specific pattern. Some blocks
-of rows obviously don't correlate with rest of the other. See the fourth
-value, and the 17th, whose scores are away off. There must be something
-in the data that we should be able to capture. Maybe the temperature or
-any natural variable on that period has produced different sets of
-values.
-
-The best number of splits is just 2 for this Dataset. Is it suprising ??
-Yes, it is. The way I identified that after testing with higher number
-of splits. There is somthing odd in the data, which contains off data
-rows. Maybe temperature or any other variable is off. If I increase the
-splits, there will always be at least two blocks that CV score will be
-much higher at least 10 times higher than all other.
-
-```{python}
-# Calculate mean squared error using cross-validation
-mean_squared_error_cv = -cv_scores.mean()
-print(f"Mean squared error using 2-fold cross-validation: {mean_squared_error_cv}")
-
-# Fit the model on the entire training data
-model_cv.fit(X_train_scaled, y_train)
-
-# Make predictions on the test set
-y_pred = model_cv.predict(X_test_scaled)
-
-# Calculate mean squared error on the test set
-mse_lm = mean_squared_error(y_test, y_pred)
-print(f"Mean squared error on the test set: {mse_lm}") 
-#array of ids. copied from top cell
-test_ids = test_ids
-
-#predict based on the model
-prediction_on_test_calcofi = model_cv.predict(test_calcofi_scaled)
-
-# Create a DataFrame with predictions
-submission_df = pd.DataFrame({'id': test_ids, 'DIC': prediction_on_test_calcofi})
-
-# Save DataFrame to CSV
-submission_df.to_csv('linear_cv.csv', index=False)
-```
-
-#### XGBoost Model
+#### Can XGBoost perform better ?
 
 The next step involves using **XGboost** for making the prediction,
 Extreme Gradient Boosting, also called the queen of the ML models is one
