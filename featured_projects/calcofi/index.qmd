@@ -1,5 +1,5 @@
 ---
-title: "Ocean Carbon prediction: which ML algorithm should I use for higher accuracy?"
+title: " which ML algorithm should the organization use for higher accuracy?"
 image: "/featured_projects/calcofi/data/earth.jpg"
 Date: "2023-12-15"
 format:
@@ -17,13 +17,13 @@ editor:
 engine: knitr
 ---
 
-XYZ, name hidden for security purpose,
-was established in 1910 to investigate the ecological factors
-contributing to the collapse of the Pacific sardine population. Its extensive time series data
-provides invaluable insights into the long-term impacts of environmental
-changes on marine ecosystems and the communities reliant on them, not
-only within the California Current System but also extending to the
-North Pacific and beyond on an international scale.
+XYZ, name hidden for security purpose, was established in 1910 to
+investigate the ecological factors contributing to the collapse of the
+Pacific sardine population. Its extensive time series data provides
+invaluable insights into the long-term impacts of environmental changes
+on marine ecosystems and the communities reliant on them, not only
+within the California Current System but also extending to the North
+Pacific and beyond on an international scale.
 
 As a part of this project, I am supporting the XYZ in predicting the
 ocean carbon values, which is a crucial part of the marine ecosystem.
@@ -34,15 +34,15 @@ carbon cycle. The predictors include various physical and chemical
 properties of the ocean, such as temperature, salinity, and oxygen
 concentration.
 
-The goal of this project is to develop multiple machine learning models
+The goal of this project is to develop two machine learning models
 that can accurately predict the DIC concentration in the ocean based on
-the given predictors. This model will help CALCOFI scientists better
+the given predictors. This model will help better
 understand the factors influencing ocean carbon levels and make
 data-driven decisions to protect marine ecosystems.
 
-# Stepwise Flow of the Project
+### Stepwise Flow of the Project
 
-1.  Linear Regression Model with Stochastic Gradient Descent
+1.  Linear Regression Model
 2.  Fine Tuned XGBoost Model
 
 ```{python}
@@ -67,9 +67,11 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score, KFold
 from sklearn.linear_model import SGDRegressor
 from sklearn.linear_model import Ridge
+from sklearn.preprocessing import PolynomialFeatures
+
 ```
 
-**Read the data and store ID:required during submission fo validity
+**Read the data and store ID:required during submission for validity
 check**
 
 ```{python}
@@ -106,16 +108,15 @@ train_calcofi = train_calcofi.drop(columns=['unnamed: 12'])
 train_calcofi.rename(columns={'ta1.x': 'ta1'}, inplace=True)
 ```
 
-The data looks clean. Now, a relationships betwen columns must be
-established and known. This helps in understanding the data, and also
+The data looks clean. Now, a relationships between columns must be
+established This helps in understanding the data, and also
 helps in feature selection. The next step below plots a correlation
-matrix. This will show those features that has strong relationship with
-the response variable.
+matrix. This will show correlated variables in the dataset.
 
 The reason that the correlation matrix is plotted to see if linear
 regression can be useful. If the correlation matrix shows strong
-relationship between the response and predictors, then linear regression
-can be used. If not, then other models like XGboost must be used.
+relationship between the response and predictors, then linear regression is
+a great algorithm. If not, then other models must be tested.
 
 ```{python}
 #plot correlation matrix
@@ -129,11 +130,6 @@ plt.show()
 ```
 
 ##### Linear regression model
-
-For this project, I will delve into using different machine learning
-models, from the simplest also called the Linear regression, then
-gradually moving up to the best model, called XGboost, which is also
-called the Queen of the Machine Learning models.
 
 ```{python}
 # Select only the predictors columns, and change them to array
@@ -187,7 +183,6 @@ plt.grid(True)
 plt.show()
 
 ```
-
 
 ```{python}
 #from the above sample, it is clear that either degree 1 or 2 is best
@@ -259,12 +254,14 @@ model_pipeline.fit(X_train, y_train)
 train_r2 = model_pipeline.score(X_train, y_train)
 val_r2 = model_pipeline.score(X_val, y_val)
 
-print(f"Training R^2 score: {train_r2}")
-print(f"Validation R^2 score: {val_r2}")
+print(f"Training R^2 score for Linear regression: {train_r2}")
+print(f"Validation R^2 score for linear regression: {val_r2}")
 ```
 
-The base linear regression model has worked well, with mean squared
-error of 36 on testing set, which means the ocean carbon values(DIC) was off by 36 point on average for the prediction test.
+The base linear regression model has worked well with 1 degree polynomial and low
+regularization parameters, with mean squared
+error of 36 on testing set, meaning ocean carbon values(DIC) was
+off by 36 point on average for the prediction test.
 
 #### Can XGBoost perform better ?
 
@@ -320,20 +317,6 @@ mse = mean_squared_error(y_test, preds, squared=False)
 print(f"MSE of the test model: {mse:.3f}")
 ```
 
-```{python}
-#change test_calcofi to dmatrix object
-dmatrix_calcofi = xgb.DMatrix(test_calcofi)
-
-#prediction_on_separate_set = model.predict(dmatrix_calcofi)
-prediction_on_test_calcofi = model_xgb.predict(dmatrix_calcofi)
-
-# Create a DataFrame with predictions
-submission_df = pd.DataFrame({'id': test_ids, 'DIC': prediction_on_test_calcofi})
-
-# Save DataFrame to CSV
-submission_df.to_csv('xgb_base.csv', index=False)
-```
-
 \*\*GRID TUNED XGBOOST MODEL
 
 ```{python}
@@ -376,27 +359,25 @@ y_pred = best_estimator.predict(X_test)
 
 # Calculate mean squared error
 mse_xgboost = mean_squared_error(y_test, y_pred)
-print("Mean Squared Error:", mse_xgboost)
+print("Training Mean Squared Error:", mse_xgboost)
 
-#get the model score
-print(f"Model score: {best_estimator.score(X_test, y_test)}")
+# Now, use the best estimator to make predictions on the validation data
+y_val_pred = best_estimator.predict(X_val)
+
+# Calculate mean squared error on the validation set
+mse_xgboost_val = mean_squared_error(y_val, y_val_pred)
+print("Validation Mean Squared Error:", mse_xgboost_val)
+
+# Get the model score on the validation set
+print(f"Model score on validation set: {best_estimator.score(X_val, y_val)}")
 ```
-
 ```{python}
-#look at the hyperparameters selected by the model
-gridsearch_mse.best_estimator_
+print(f"Model score on validation setfor linear regression: {val_r2}")
+print(f"Model score on validation set for XGBoost: {best_estimator.score(X_val, y_val)}")
+
 ```
 
-```{python}
-#create a table bring just mae score from linear regression and xgboost
-mse_lm, mse_xgboost 
 
-#create a table bring just mae score from linear regression and xgboost
-mse_lm, mse_xgboost
-```
-
-The XGboost model has lower Bias, and high accuracy compared to the
-linear regression model. Thus, I suggest CALCOFI to use the XGBOOST
-model for any new incoming data on ocean values. The trained xgboost
-model can be deployed that has the capacity to updates the model with
-new data.
+The XGBoost model has lower Bias, and high accuracy compared to the
+linear regression model. Thus, I suggest using the XGBOOST model for any
+new incoming data on ocean values.
