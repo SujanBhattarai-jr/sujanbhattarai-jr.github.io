@@ -9,6 +9,7 @@ format:
 date: 12-15-2023
 categories: [Python, Geospatial]
 engine: knitr
+draft: true
 ---
 
 ```{r setup, include=FALSE}

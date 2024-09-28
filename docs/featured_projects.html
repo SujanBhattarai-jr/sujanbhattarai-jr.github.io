@@ -72,9 +72,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -98,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -141,9 +141,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Causal Inference">Causal Inference <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Data Viz">Data Viz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Econometrics">Econometrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Machine Learning">Machine Learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="NLP">NLP <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Statistics">Statistics <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -170,30 +168,17 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Machine Learning,Python" data-listing-file-modified-sort="1724877855162" data-listing-reading-time-sort="8">
+<div class="quarto-post image-right" data-index="0" data-categories="Machine Learning,Python" data-listing-file-modified-sort="1727546525664" data-listing-reading-time-sort="8">
 <div class="thumbnail">
 <p><a href="./featured_projects/calcofi/index.html"> <img src="./featured_projects/calcofi/data/earth.jpg" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./featured_projects/calcofi/index.html">
 <h3 class="no-anchor listing-title">
-which ML algorithm should the organization use for higher accuracy?
+Using AI for Good: Helping non profits in predicting carbon
 </h3>
 <div class="listing-subtitle">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
-Python
-</div>
-</div>
-<a href="./featured_projects/calcofi/index.html">
-<div class="listing-description">
-XYZ, name hidden for security purpose, was established in 1910 to investigate the ecological factors contributing to the collapse of the Pacific sardine population. Its…
 </div>
 </a>
 </div>
@@ -201,6 +186,9 @@ XYZ, name hidden for security purpose, was established in 1910 to investigate th
 <a href="./featured_projects/calcofi/index.html">
 <div class="listing-author">
 Sujan Bhattarai
+</div>
+<div class="listing-reading-time">
+8 min
 </div>
 </a>
 </div>
@@ -218,30 +206,14 @@ Did Smoking Mothers Have Lowered Weight Children?
 
 </div>
 </a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Statistics'); return false;">
-Statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Econometrics'); return false;">
-Econometrics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Causal Inference'); return false;">
-Causal Inference
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./featured_projects/econometrics/index.html">
-<div class="listing-description">
-The analysis aimed to estimate the causal effect of maternal smoking during pregnancy on infant birth weight. Initial comparisons…
-</div>
-</a>
 </div>
 <div class="metadata">
 <a href="./featured_projects/econometrics/index.html">
 <div class="listing-author">
 Sujan Bhattarai
+</div>
+<div class="listing-reading-time">
+15 min
 </div>
 </a>
 </div>
@@ -259,24 +231,14 @@ Identifying the most common word in articles on climate science
 
 </div>
 </a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('NLP'); return false;">
-NLP
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./featured_projects/textAnalysis/index.html">
-<div class="listing-description">
-In today’s era of burgeoning information, understanding the predominant themes and trends in vast volumes of text data is crucial for extracting meaningful insights. This…
-</div>
-</a>
 </div>
 <div class="metadata">
 <a href="./featured_projects/textAnalysis/index.html">
 <div class="listing-author">
 Sujan Bhattarai
+</div>
+<div class="listing-reading-time">
+10 min
 </div>
 </a>
 </div>
@@ -294,16 +256,6 @@ Soccer players attributes comparison: Conclusion from Data visualization
 
 </div>
 </a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Data Viz'); return false;">
-Data Viz
-</div>
-</div>
-<a href="./featured_projects/data_viz/index.html">
-<div class="listing-description">
-This project aims to create infographics comparing attributes of soccer players, sourced from a European soccer database available on Kaggle. The database contains data on…
-</div>
-</a>
 </div>
 <div class="metadata">
 <a href="./featured_projects/data_viz/index.html">
@@ -312,6 +264,9 @@ Mar 5, 2024
 </div>
 <div class="listing-author">
 Sujan Bhattarai
+</div>
+<div class="listing-reading-time">
+18 min
 </div>
 </a>
 </div>
@@ -329,17 +284,6 @@ Comparing competing Machine Learning models in classifying Spotify songs
 
 </div>
 </a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-</div>
-<a href="./featured_projects/ml_spotify/index.html">
-<div class="listing-description">
-
-In this project, I explored four popular machine learning models (K-Nearest Neighbors, Decision Tree, Bagged Tree, and Random Forest) to classify Spotify songs into two…
-</div>
-</a>
 </div>
 <div class="metadata">
 <a href="./featured_projects/ml_spotify/index.html">
@@ -348,6 +292,9 @@ Jan 20, 2024
 </div>
 <div class="listing-author">
 Sujan Bhattarai
+</div>
+<div class="listing-reading-time">
+15 min
 </div>
 </a>
 </div>

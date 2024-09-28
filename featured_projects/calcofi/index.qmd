@@ -1,5 +1,5 @@
 ---
-title: " which ML algorithm should the organization use for higher accuracy?"
+title: " Using AI for Good: Helping non profits in predicting carbon"
 image: "/featured_projects/calcofi/data/earth.jpg"
 Date: "2023-12-15"
 format:
