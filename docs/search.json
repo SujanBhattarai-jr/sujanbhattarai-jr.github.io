@@ -95,6 +95,55 @@
     "href": "index.html",
     "title": "",
     "section": "",
-    "text": "Areas of Proficiency\n  \n\n\n\n  \n     SUJAN BHATTARAI\n     Welcome to The Dataverse\n  \n  \n    \n      Areas of Proficiency\n    \n    \n      \n        Data Science\n        Enjoys analytical thinking, data-driven decisions, and content creation about Data Science\n      \n      \n        Machine Learning\n        Strong understanding of maths in ML algorithms: neural networks, tree based models, regressions\n      \n      \n        Causal Inference\n        Experience with First order effects, DID estimate, panel data, inverse weighted regression\n      \n      \n        Databases\n        Proficient at RDBMS, experience with snowflake and big data, concepts on HDFS and Hadoop \n      \n      \n        Modelling\n         Ran modelling simulations, randomize experimental designs, measure parameters uncertainties\n      \n      \n        Data Visualization\n         Knowledge of data visualization concepts, expert at ggplot and ggplot-children packages"
+    "text": "Areas of Proficiency\n  \n\n\n\n  \n     SUJAN BHATTARAI\n     Welcome to The Dataverse\n  \n  \n    \n      Areas of Proficiency\n    \n    \n      \n        Data Science & AI\n        Enjoys analytical thinking and integrating AI for data-driven decision making\n      \n      \n        Machine Learning\n        Strong understanding of ML algorithms: neural networks, tree based models, classifications & regressions\n      \n      \n        Applied Statistics\n        Experienced at First order effects, DID estimate, panel data, inverse weighted regression\n      \n      \n        Databases & Big Data\n        Proficient at RDBMS, Certified data analyst with SQL by Datacamp  \n      \n      \n        Modelling\n         Skilled at experimental designs with randomize sampling, ARIMA forecasting, quantifying uncertainties\n      \n      \n        Geospatial analysis\n        Knowledged at GeoSpatial analysis and data visualization concepts: Expert at raster and vector databases, hyperdimensional data"
+  },
+  {
+    "objectID": "environment.html",
+    "href": "environment.html",
+    "title": "",
+    "section": "",
+    "text": "Certificate Page\n    \n\n\n    \n    \n\n    \n    \n        \n            Data Science with R\n            \n                Fundamentals of R programming\n                Data manipulation with dplyr and tidyr\n                Data visualization using ggplot2\n                Statistical analysis and hypothesis testing\n                Machine learning with R\n            \n        \n        \n            \n        \n    \n\n    \n        \n            SAS programming\n            \n                SAS function, tables, Schemas\n                Data cleaning and analysis with SAS\n                Statistical analysis with SAS procedures\n                Creation of reports and graphics\n            \n        \n        \n            \n        \n    \n\n    \n        \n            Concepts on Big data\n            \n                Conceptual understanding of Big Data\n                Big Data technologies and ecosystems\n                Data processing and storage techniques\n                Big Data analytics and applications\n            \n        \n        \n            \n        \n    \n\n    \n        \n            Big Data Modelling\n            \n                Understanding of Big Data modeling techniques\n                Application of predictive analytics in Big Data\n                Hands-on experience with Hadoop\n                Designing and implementing Big Data solutions\n            \n        \n        \n            \n        \n    \n\n    \n        \n            Data Analyst with SQL\n            \n                SQL queries and RDBMS foundation\n                Data manipulation with SQL\n                Joining and aggregating data\n                Writing subqueries and CTEs\n            \n        \n        \n            \n        \n    \n\n    \n    \n     \n        \n            Hands-On Essentials: Data Warehouse\n            \n                Create, edit, and load snoflake Tables\n                Create and Use Snowflake resources\n                Create and edit COPY statements\n                Transform and parse CSV and JSON data"
+  },
+  {
+    "objectID": "certifications.html",
+    "href": "certifications.html",
+    "title": "",
+    "section": "",
+    "text": "Certificate Page\n    \n\n\n    \n    \n\n    \n    \n        \n            Data Science with R\n            \n                Fundamentals of R programming\n                Data manipulation with dplyr and tidyr\n                Data visualization using ggplot2\n                Statistical analysis and hypothesis testing\n                Machine learning with R\n            \n        \n        \n            \n        \n    \n\n    \n        \n            SAS programming\n            \n                SAS function, tables, Schemas\n                Data cleaning and analysis with SAS\n                Statistical analysis with SAS procedures\n                Creation of reports and graphics\n            \n        \n        \n            \n        \n    \n\n    \n        \n            Concepts on Big data\n            \n                Conceptual understanding of Big Data\n                Big Data technologies and ecosystems\n                Data processing and storage techniques\n                Big Data analytics and applications\n            \n        \n        \n            \n        \n    \n\n    \n        \n            Big Data Modelling\n            \n                Understanding of Big Data modeling techniques\n                Application of predictive analytics in Big Data\n                Hands-on experience with Hadoop\n                Designing and implementing Big Data solutions\n            \n        \n        \n            \n        \n    \n\n    \n        \n            Data Analyst with SQL\n            \n                SQL queries and RDBMS foundation\n                Data manipulation with SQL\n                Joining and aggregating data\n                Writing subqueries and CTEs\n            \n        \n        \n            \n        \n    \n\n    \n    \n     \n        \n            Hands-On Essentials: Data Warehouse\n            \n                Create, edit, and load snoflake Tables\n                Create and Use Snowflake resources\n                Create and edit COPY statements\n                Transform and parse CSV and JSON data"
+  },
+  {
+    "objectID": "about.html#updates",
+    "href": "about.html#updates",
+    "title": "\n\n",
+    "section": "Updates:",
+    "text": "Updates:\n\n📊 Practising SQL from HackerRank and learning DSA in LeetCode 🧠 Mastering neural network architecture and learning PyTorch from Coursera and DataCamp\n\n\nRecently completed:\n\n🖥 Worked on 4TB data on NCAR supercomputer, for developing Machine Learning model and a web-interactive dashboard 🚀 Learnt Big Data System with Apache Hive & Impala 📚 Read Machine Learning with Scikit Learn book by O’Reilly 🌐 Initiated a new Python project for a new blog in ML"
+  },
+  {
+    "objectID": "about.html#tech-skills",
+    "href": "about.html#tech-skills",
+    "title": "\n\n",
+    "section": "Tech Skills",
+    "text": "Tech Skills\n\nPython 🐍\nR 📊\nSQL 💾\nSAS 📈\nBig Data 🌐\nMachine Learning 🤖\nData Visualization 📊\nGeospatial Analysis 🌍\nData Mining ⛏️\nHigh performance computing 🚀\nBash Scripting 📜\nWeb Development 🌐"
+  },
+  {
+    "objectID": "about.html#blogs",
+    "href": "about.html#blogs",
+    "title": "\n\n",
+    "section": "Blogs:",
+    "text": "Blogs:\n\n\nForecasting Air-Quality Emission 🌬️\n\n\nGeospatial Analysis 🗺️\n\n\nArtificial Intelligence and Nature Conservation 🌿"
+  },
+  {
+    "objectID": "about.html#statistics",
+    "href": "about.html#statistics",
+    "title": "\n\n",
+    "section": "Statistics:",
+    "text": "Statistics:\n 📈\n\nThanks for Visiting\nIf you have come this far, revise Hadoop CLI(HDFS DFS) commands, extremely useful if you are using SQL for Big data analysis) Apache_CLI"
+  },
+  {
+    "objectID": "about.html#recent-updates",
+    "href": "about.html#recent-updates",
+    "title": "\n\n",
+    "section": "Recent Updates:",
+    "text": "Recent Updates:\n\n📊 Practised SQL from HackerRank 🧠 Mastered neural network architecture and learning PyTorch from Coursera and DataCamp 🌐 Completed 15 networking conversations with Climate Data Scientist\n\n\nRecently completed:\n\n🖥 Worked on 4TB Big climate model data on NCAR’s supercomputer, for developing Machine Learning model for uncertainty quantification 🚀 Learnt Big Data System with Apache Hive & Impala  📚 Read Machine Learning with Scikit Learn book by O’Reilly 🌐 Initiated a new Python project for a new blog in Machine Learning 🤖 Finished reinforcement Learning from DeepLearning.AI"
   }
 ]

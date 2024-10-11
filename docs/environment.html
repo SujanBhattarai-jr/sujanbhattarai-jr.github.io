@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>about</title>
+<title>environment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Certificates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -117,147 +117,244 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cube Animation with Torchlight</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      background-color: #213343; /* Space-like background color */
-      color: white; /* Text color */
-      position: relative;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Move behind other content */
-    }
-  </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Page</title>
+    <style>
+        /* Container Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7; /* Background for the certificates */
+            font-family: Georgia, sans-serif;
+        }
+
+        .certificate-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px;
+            background-color: white; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            position: relative;
+        }
+
+        /* Image Styling */
+        .certificate-image {
+            width: 400px;
+            border-radius: 8px; /* Rounded corners */
+            transition: transform 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .certificate-image:hover {
+            transform: scale(1.13); /* Enlarge image on hover */
+        }
+
+        /* Content Styling */
+        .certificate-details {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .certificate-details h3 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333; /* Dark text color */
+        }
+
+        .certificate-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .certificate-details li {
+            margin-bottom: 5px;
+            color: #555 !important; /* Medium dark text color */
+        }
+
+        ul,
+        ul li {
+            color: #000; /* Black text color */
+        }
+
+        /* Confetti Styling */
+        #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000; /* Make sure confetti is on top */
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffc107;
+            opacity: 0.9;
+            animation: confetti-fall linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+
+
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Certificate Sections -->
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3 class="anchored">Data Science with R</h3>
+            <ul>
+                <li>Fundamentals of R programming</li>
+                <li>Data manipulation with dplyr and tidyr</li>
+                <li>Data visualization using ggplot2</li>
+                <li>Statistical analysis and hypothesis testing</li>
+                <li>Machine learning with R</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/data_scientist_with_r.jpg" alt="Data Science with R Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3 class="anchored">SAS programming</h3>
+            <ul>
+                <li>SAS function, tables, Schemas</li>
+                <li>Data cleaning and analysis with SAS</li>
+                <li>Statistical analysis with SAS procedures</li>
+                <li>Creation of reports and graphics</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/sas.jpg" alt="SAS Programming Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3 class="anchored">Concepts on Big data</h3>
+            <ul>
+                <li>Conceptual understanding of Big Data</li>
+                <li>Big Data technologies and ecosystems</li>
+                <li>Data processing and storage techniques</li>
+                <li>Big Data analytics and applications</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/intro_to_bigdata.jpg" alt="Concepts on Big Data Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3 class="anchored">Big Data Modelling</h3>
+            <ul>
+                <li>Understanding of Big Data modeling techniques</li>
+                <li>Application of predictive analytics in Big Data</li>
+                <li>Hands-on experience with Hadoop</li>
+                <li>Designing and implementing Big Data solutions</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/big_data_modeling.jpg" alt="Big Data Modelling Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3 class="anchored">Data Analyst with SQL</h3>
+            <ul>
+                <li>SQL queries and RDBMS foundation</li>
+                <li>Data manipulation with SQL</li>
+                <li>Joining and aggregating data</li>
+                <li>Writing subqueries and CTEs</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/sql.jpg" alt="Data Analyst with SQL Certificate" class="certificate-image">
+        </div>
+    </div>
+
     <script>
-        let scene, camera, renderer, stars = [];
-        const numStars = 30;
+        document.addEventListener('DOMContentLoaded', () => {
+            const confettiContainer = document.getElementById('confetti-container');
+            const colors = ['#ffc107', '#17a2b8', '#28a745', '#dc3545', '#6f42c1'];
 
-        function init() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 5;
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confetti);
 
-            renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
-
-            const colors = [0xffffff, 0xffff00, 0xadd8e6]; // white, yellow, light blue
-
-            for (let i = 0; i < numStars; i++) {
-                let geometry = new THREE.SphereGeometry(0.1, 5, 5); // Star-shaped geometry
-                let material = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random() * colors.length)] });
-                let star = new THREE.Mesh(geometry, material);
-
-                star.position.x = (Math.random() - 0.5) * 10;
-                star.position.y = (Math.random() - 0.5) * 10;
-                star.position.z = (Math.random() - 0.5) * 10;
-
-                scene.add(star);
-                stars.push(star);
+                setTimeout(() => {
+                    confetti.remove();
+                }, 10000); // Remove confetti after 5 seconds
             }
 
-            animate();
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            stars.forEach(star => {
-                // Add wobbling effect
-                star.position.x += Math.sin(star.position.z * 2) * 0.01;
-                star.position.y += Math.cos(star.position.x * 3) * 0.02;
-                star.position.z += Math.sin(star.position.y * 4) * 0.02;
-
-                // Check if the star is out of the view, if yes, reset its position
-                if (
-                    star.position.x > 5 || star.position.x < -5 ||
-                    star.position.y > 5 || star.position.y < -5 ||
-                    star.position.z > 5 || star.position.z < -5
-                ) {
-                    star.position.x = (Math.random() - 0.5) * 10;
-                    star.position.y = (Math.random() - 0.5) * 10;
-                    star.position.z = (Math.random() - 0.5) * 10;
-                }
-            });
-
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            setInterval(createConfetti, 100);
         });
-
-        init();
     </script>
-  
-  
- 
+    
+     <div class="certificate-container">
+        <div class="certificate-details">
+            <h3 class="anchored">Hands-On Essentials: Data Warehouse</h3>
+            <ul>
+                <li>Create, edit, and load snoflake Tables</li>
+                <li>Create and Use Snowflake resources</li>
+                <li>Create and edit COPY statements</li>
+                <li>Transform and parse CSV and JSON data</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/snowflake.jpg" alt="Hands-On Essentials: Data Warehousing Workshop" class="certificate-image">
+    </div>
 
-<div id="header" style="text-align: center;">
-<p><img src="https://media2.giphy.com/media/3o7qE1YN7aBOFPRw8E/giphy.gif?cid=ecf05e471znfcirjxm6vianun3sbijamo88oa489zph9lh30&amp;ep=v1_gifs_related&amp;rid=giphy.gif&amp;ct=g" width="200"></p>
-</div>
-<div id="badges" style="text-align: center;">
-<p><a href="https://www.linkedin.com/in/bhattarai1/"> <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn Badge"> </a></p>
-</div>
-<h1 style="text-align: center;">
-<img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px">
-</h1>
-<section id="recent-updates" class="level2">
-<h2 class="anchored" data-anchor-id="recent-updates">Recent Updates:</h2>
-<ul>
-📊 Practised SQL from HackerRank<br> 🧠 Mastered neural network architecture and learning PyTorch from Coursera and DataCamp<br> 🌐 Completed 15 networking conversations with Climate Data Scientist<br>
-</ul>
-<section id="recently-completed" class="level4">
-<h4 class="anchored" data-anchor-id="recently-completed">Recently completed:</h4>
-<ul>
-🖥 Worked on 4TB Big climate model data on NCAR’s supercomputer, for developing Machine Learning model for uncertainty quantification<br> 🚀 Learnt Big Data System with Apache Hive &amp; Impala <br> 📚 Read Machine Learning with Scikit Learn book by O’Reilly<br> 🌐 Initiated a new Python project for a new blog in Machine Learning<br> 🤖 Finished reinforcement Learning from DeepLearning.AI
-</ul>
-</section>
-</section>
-<section id="tech-skills" class="level2">
-<h2 class="anchored" data-anchor-id="tech-skills">Tech Skills</h2>
-<ol type="1">
-<li>Python 🐍</li>
-<li>R 📊</li>
-<li>SQL 💾</li>
-<li>SAS 📈</li>
-<li>Big Data 🌐</li>
-<li>Machine Learning 🤖</li>
-<li>Data Visualization 📊</li>
-<li>Geospatial Analysis 🌍</li>
-<li>Data Mining ⛏️</li>
-<li>High performance computing 🚀</li>
-<li>Bash Scripting 📜</li>
-<li>Web Development 🌐</li>
-</ol>
-</section>
-<section id="statistics" class="level2">
-<h2 class="anchored" data-anchor-id="statistics">Statistics:</h2>
-<p><a href="https://git.io/streak-stats?v=1"><img src="http://github-readme-streak-stats.herokuapp.com?user=sujan-bhattarai12&amp;theme=dark&amp;background=000000" class="img-fluid" alt="GitHub Streak"></a> 📈</p>
-<section id="thanks-for-visiting" class="level3">
-<h3 class="anchored" data-anchor-id="thanks-for-visiting">Thanks for Visiting</h3>
-<p>If you have come this far, revise Hadoop CLI(HDFS DFS) commands, extremely useful if you are using SQL for Big data analysis) <a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/FileSystemShell.html">Apache_CLI</a></p>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const confettiContainer = document.getElementById('confetti-container');s
+            const colors = ['#ffc107', '#17a2b8', '#28a745', '#dc3545', '#6f42c1'];
+
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 10000); // Remove confetti after 5 seconds
+            }
+
+            setInterval(createConfetti, 100);
+        });
+    </script>
 
 
-</section>
-</section>
 
-</main> <!-- /main -->
+
+
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

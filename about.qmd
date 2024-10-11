@@ -117,18 +117,20 @@ style:
 </h1>
 
 
-## Updates:
+## Recent Updates:
 <ul>
-📊 Practising SQL from HackerRank and learning DSA in LeetCode<br>
-🧠 Mastering neural network architecture and learning PyTorch from Coursera and DataCamp<br>
+📊 Practised SQL from HackerRank<br>
+🧠 Mastered neural network architecture and learning PyTorch from Coursera and DataCamp<br>
+🌐 Completed 15 networking conversations with Climate Data Scientist<br>
 </ul>
 
 #### Recently completed:
 <ul>
-🖥 Worked on 4TB data on NCAR supercomputer, for developing Machine Learning model and a web-interactive dashboard<br>
-🚀 Learnt Big Data System with Apache Hive & Impala<br>
+🖥 Worked on 4TB Big climate model data on NCAR's supercomputer, for developing Machine Learning model for uncertainty quantification<br>
+🚀 Learnt Big Data System with Apache Hive & Impala <br>
 📚 Read Machine Learning with Scikit Learn book by O'Reilly<br>
-🌐 Initiated a new Python project for a new blog in ML 
+🌐 Initiated a new Python project for a new blog in Machine Learning<br>
+🤖 Finished reinforcement Learning from DeepLearning.AI
 </ul>
 
 ## Tech Skills
@@ -144,14 +146,6 @@ style:
 10. High performance computing 🚀
 11. Bash Scripting 📜
 12. Web Development 🌐
-
-## Blogs:
-<ul>
-    <li><a href="https://sujan-bhattarai12.github.io/posts/southAsia_crop/">Forecasting Air-Quality Emission 🌬️</a></li>
-    <li><a href="https://sujan-bhattarai12.github.io/posts/economic_zone/">Geospatial Analysis 🗺️</a></li>
-    <li><a href="https://sujan-bhattarai12.github.io/posts/12-09-2020-AI-ethics/">Artificial Intelligence and Nature Conservation 🌿</a></li>
-</ul>
-
 
 ## Statistics:
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=sujan-bhattarai12&theme=dark&background=000000)](https://git.io/streak-stats?v=1) 📈

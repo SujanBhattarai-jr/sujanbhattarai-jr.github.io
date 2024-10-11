@@ -128,28 +128,28 @@
     </div>
     <div class="colu">
       <div class="colus">
-        <h3>Data Science</h3>
-        <p>Enjoys analytical thinking, data-driven decisions, and content creation about Data Science</p>
+        <h3>Data Science & AI</h3>
+        <p>Enjoys analytical thinking and integrating AI for data-driven decision making</p>
       </div>
       <div class="colus">
         <h3>Machine Learning</h3>
-        <p>Strong understanding of maths in ML algorithms: neural networks, tree based models, regressions</p>
+        <p>Strong understanding of ML algorithms: neural networks, tree based models, classifications & regressions</p>
       </div>
       <div class="colus">
-        <h3>Causal Inference</h3>
-        <p>Experience with First order effects, DID estimate, panel data, inverse weighted regression</p>
+        <h3>Applied Statistics</h3>
+        <p>Experienced at First order effects, DID estimate, panel data, inverse weighted regression</p>
       </div>
       <div class="colus">
-        <h3>Databases</h3>
-        <p>Proficient at RDBMS, experience with snowflake and big data, concepts on HDFS and Hadoop </p>
+        <h3>Databases & Big Data</h3>
+        <p>Proficient at RDBMS, Certified data analyst with SQL by Datacamp  </p>
       </div>
       <div class="colus">
         <h3>Modelling</h3>
-        <p> Ran modelling simulations, randomize experimental designs, measure parameters uncertainties</p>
+        <p> Skilled at experimental designs with randomize sampling, ARIMA forecasting, quantifying uncertainties</p>
       </div>
       <div class="colus">
-        <h3>Data Visualization</h3>
-        <p> Knowledge of data visualization concepts, expert at ggplot and ggplot-children packages</p>
+        <h3>Geospatial analysis</h3>
+        Knowledged at GeoSpatial analysis and data visualization concepts: Expert at raster and vector databases, hyperdimensional data</p>
       </div>
     </div>
   </div>

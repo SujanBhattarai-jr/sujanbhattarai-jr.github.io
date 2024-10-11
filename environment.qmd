@@ -1,0 +1,240 @@
+
+```{=html}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Page</title>
+    <style>
+        /* Container Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7; /* Background for the certificates */
+            font-family: Georgia, sans-serif;
+        }
+
+        .certificate-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px;
+            background-color: white; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            position: relative;
+        }
+
+        /* Image Styling */
+        .certificate-image {
+            width: 400px;
+            border-radius: 8px; /* Rounded corners */
+            transition: transform 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .certificate-image:hover {
+            transform: scale(1.13); /* Enlarge image on hover */
+        }
+
+        /* Content Styling */
+        .certificate-details {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .certificate-details h3 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333; /* Dark text color */
+        }
+
+        .certificate-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .certificate-details li {
+            margin-bottom: 5px;
+            color: #555 !important; /* Medium dark text color */
+        }
+
+        ul,
+        ul li {
+            color: #000; /* Black text color */
+        }
+
+        /* Confetti Styling */
+        #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000; /* Make sure confetti is on top */
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffc107;
+            opacity: 0.9;
+            animation: confetti-fall linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100%) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Certificate Sections -->
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3>Data Science with R</h3>
+            <ul>
+                <li>Fundamentals of R programming</li>
+                <li>Data manipulation with dplyr and tidyr</li>
+                <li>Data visualization using ggplot2</li>
+                <li>Statistical analysis and hypothesis testing</li>
+                <li>Machine learning with R</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/data_scientist_with_r.jpg" alt="Data Science with R Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3>SAS programming</h3>
+            <ul>
+                <li>SAS function, tables, Schemas</li>
+                <li>Data cleaning and analysis with SAS</li>
+                <li>Statistical analysis with SAS procedures</li>
+                <li>Creation of reports and graphics</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/sas.jpg" alt="SAS Programming Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3>Concepts on Big data</h3>
+            <ul>
+                <li>Conceptual understanding of Big Data</li>
+                <li>Big Data technologies and ecosystems</li>
+                <li>Data processing and storage techniques</li>
+                <li>Big Data analytics and applications</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/intro_to_bigdata.jpg" alt="Concepts on Big Data Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3>Big Data Modelling</h3>
+            <ul>
+                <li>Understanding of Big Data modeling techniques</li>
+                <li>Application of predictive analytics in Big Data</li>
+                <li>Hands-on experience with Hadoop</li>
+                <li>Designing and implementing Big Data solutions</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/big_data_modeling.jpg" alt="Big Data Modelling Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <div class="certificate-container">
+        <div class="certificate-details">
+            <h3>Data Analyst with SQL</h3>
+            <ul>
+                <li>SQL queries and RDBMS foundation</li>
+                <li>Data manipulation with SQL</li>
+                <li>Joining and aggregating data</li>
+                <li>Writing subqueries and CTEs</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/sql.jpg" alt="Data Analyst with SQL Certificate" class="certificate-image">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const confettiContainer = document.getElementById('confetti-container');
+            const colors = ['#ffc107', '#17a2b8', '#28a745', '#dc3545', '#6f42c1'];
+
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 10000); // Remove confetti after 5 seconds
+            }
+
+            setInterval(createConfetti, 100);
+        });
+    </script>
+    
+     <div class="certificate-container">
+        <div class="certificate-details">
+            <h3>Hands-On Essentials: Data Warehouse</h3>
+            <ul>
+                <li>Create, edit, and load snoflake Tables</li>
+                <li>Create and Use Snowflake resources</li>
+                <li>Create and edit COPY statements</li>
+                <li>Transform and parse CSV and JSON data</li>
+            </ul>
+        </div>
+        <div>
+            <img src="files/certificates/snowflake.jpg" alt="Hands-On Essentials: Data Warehousing Workshop" class="certificate-image">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const confettiContainer = document.getElementById('confetti-container');s
+            const colors = ['#ffc107', '#17a2b8', '#28a745', '#dc3545', '#6f42c1'];
+
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 10000); // Remove confetti after 5 seconds
+            }
+
+            setInterval(createConfetti, 100);
+        });
+    </script>
+</body>
+</html>
+```
+
